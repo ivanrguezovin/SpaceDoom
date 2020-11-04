@@ -11,7 +11,6 @@ public:
 	bool isOverlap(Actor* actor);
 	bool containsPoint(int pointX, int pointY); // contiene punto
 	bool isInRender(float scrollY = 0);
-	bool collisionDown;
 	bool outRight;
 	bool outLeft;
 

@@ -13,12 +13,13 @@ GameLayer::GameLayer(Game* game)
 
 
 void GameLayer::init() {
-	pad = new Pad(WIDTH * 0.15, HEIGHT * 0.80, game);
+	pad = new Pad(WIDTH * 0.15, HEIGHT * 0.60, game);
 
 	buttonJump = new Actor("res/boton_salto.png", WIDTH * 0.9, HEIGHT * 0.55, 100, 100, game);
 	buttonShoot = new Actor("res/boton_disparo.png", WIDTH * 0.75, HEIGHT * 0.83, 100, 100, game);
 
 	space = new Space(1);
+	scrollY = 0;
 	scrollX = 0;
 	tiles.clear();
 
@@ -176,7 +177,7 @@ void GameLayer::processControls() {
 
 	}
 	else if (controlMoveY < 0) {
-		player->jump();
+		
 	}
 	else {
 
@@ -203,9 +204,12 @@ void GameLayer::update() {
 		init();
 	}
 
-	// Jugador se cae
-	if (player->y > HEIGHT + 80) {
-		init();
+	// Jugador se sale de los límites de la pantalla
+	if (player->x > WIDTH + 20) {
+		player->x = 0;
+	}
+	else if (player->x < -20) {
+		player->x = WIDTH;
 	}
 
 	space->update();
@@ -235,7 +239,7 @@ void GameLayer::update() {
 	list<Enemy*> deleteEnemies;
 	list<Projectile*> deleteProjectiles;
 	for (auto const& projectile : projectiles) {
-		if (projectile->isInRender(scrollX) == false || projectile->vx == 0) {
+		if (projectile->isInRender(scrollY) == false || projectile->vy == 0) {
 
 			bool pInList = std::find(deleteProjectiles.begin(),
 				deleteProjectiles.end(),
@@ -321,16 +325,16 @@ void GameLayer::draw() {
 
 	background->draw();
 	for (auto const& tile : tiles) {
-		tile->draw(scrollX);
+		tile->draw(scrollY);
 	}
 
 	for (auto const& projectile : projectiles) {
-		projectile->draw(scrollX);
+		projectile->draw(scrollY);
 	}
-	cup->draw(scrollX);
-	player->draw(scrollX);
+	cup->draw(scrollY);
+	player->draw(scrollY);
 	for (auto const& enemy : enemies) {
-		enemy->draw(scrollX);
+		enemy->draw(scrollY);
 	}
 
 	backgroundPoints->draw();

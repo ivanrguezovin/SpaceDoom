@@ -49,13 +49,6 @@ void Player::update() {
 
 	bool endAnimation = animation->update();
 
-	if (collisionDown == true) {
-		onAir = false;
-	}
-	else {
-		onAir = true;
-	}
-
 
 	// Acabo la animación, no sabemos cual
 	if (endAnimation) {

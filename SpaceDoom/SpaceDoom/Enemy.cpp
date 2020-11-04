@@ -12,8 +12,8 @@ Enemy::Enemy(float x, float y, Game* game)
 		108, 40, 6, 3, true, game);
 	animation = aMoving;
 
-	vx = 1;
-	vxIntelligence = -1;
+	vx = 0;
+	vxIntelligence = 0;
 	vx = vxIntelligence;
 
 }

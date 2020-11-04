@@ -15,7 +15,6 @@ public:
 	void addStaticActor(Actor* actor);
 	void removeDynamicActor(Actor* actor);
 	void removeStaticActor(Actor* actor);
-	float gravity;
 	list<Actor*> dynamicActors;
 	list<Actor*> staticActors;
 };
