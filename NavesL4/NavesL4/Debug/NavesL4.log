@@ -1,0 +1,85 @@
+﻿  Actor.cpp
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\Actor.cpp(11,12): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\Actor.cpp(12,12): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\Actor.cpp(31,32): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+  Background.cpp
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\Background.cpp(19,9): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+  Enemy.cpp
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\Enemy.cpp(8,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\Enemy.cpp(8,50): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\Enemy.cpp(11,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\Enemy.cpp(11,56): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\Enemy.cpp(80,31): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+  Game.cpp
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\Audio.h(6,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\Game.cpp(68,56): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\Game.cpp(68,35): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+  GameLayer.cpp
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\Audio.h(6,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\GameLayer.cpp(19,95): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\GameLayer.cpp(29,66): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\GameLayer.cpp(60,13): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\GameLayer.cpp(61,13): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\GameLayer.cpp(306,24): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\GameLayer.cpp(313,24): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\GameLayer.cpp(398,35): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\GameLayer.cpp(398,26): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\GameLayer.cpp(401,39): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\GameLayer.cpp(403,43): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\GameLayer.cpp(403,34): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\GameLayer.cpp(406,42): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\GameLayer.cpp(406,33): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\GameLayer.cpp(413,51): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\GameLayer.cpp(413,42): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\GameLayer.cpp(414,39): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\GameLayer.cpp(425,43): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\GameLayer.cpp(425,34): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\GameLayer.cpp(428,42): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\GameLayer.cpp(428,33): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\GameLayer.cpp(435,35): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\GameLayer.cpp(435,26): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\GameLayer.cpp(441,43): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\GameLayer.cpp(441,34): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\GameLayer.cpp(444,42): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\GameLayer.cpp(444,33): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+  MenuLayer.cpp
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\MenuLayer.cpp(92,38): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\MenuLayer.cpp(92,29): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+  Pad.cpp
+  Player.cpp
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\Audio.h(6,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\Player.cpp(11,10): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\Player.cpp(11,3): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\Player.cpp(13,10): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\Player.cpp(13,3): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\Player.cpp(16,10): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\Player.cpp(16,3): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\Player.cpp(18,10): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\Player.cpp(18,3): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\Player.cpp(19,68): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\Player.cpp(19,61): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\Player.cpp(21,69): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\Player.cpp(21,62): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\Player.cpp(23,76): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\Player.cpp(23,69): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\Player.cpp(25,77): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\Player.cpp(25,70): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\Player.cpp(27,77): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\Player.cpp(27,70): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\Player.cpp(137,46): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\Player.cpp(137,43): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\Player.cpp(150,32): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\Player.cpp(154,33): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+  Projectile.cpp
+  Space.cpp
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\Space.cpp(34,30): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\Space.cpp(64,26): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\Space.cpp(71,30): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\Space.cpp(103,26): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\Space.cpp(110,30): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\Space.cpp(142,26): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\Space.cpp(150,30): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\jorda\Desktop\Laboratorio4\NavesL4\NavesL4\Space.cpp(191,26): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+  Tile.cpp
+  Generando código...
+  NavesL4.vcxproj -> C:\Users\jorda\Desktop\Laboratorio4\NavesL4\Debug\NavesL4.exe
