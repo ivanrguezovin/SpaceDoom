@@ -12,9 +12,9 @@ Enemy::Enemy(float x, float y, Game* game)
 		108, 40, 6, 3, true, game);
 	animation = aMoving;
 
-	vx = 0;
-	vxIntelligence = 0;
-	vx = vxIntelligence;
+	vy = 0;
+	vyIntelligence = 1;
+	vy = vyIntelligence;
 
 }
 
@@ -41,28 +41,14 @@ void Enemy::update() {
 	// Establecer velocidad
 	if (state != game->stateDying) {
 		// no está muerto y se ha quedado parado
-		if (vx == 0) {
-			vxIntelligence = vxIntelligence * -1;
-			vx = vxIntelligence;
-		}
-		if (outRight) {
-			// mover hacia la izquierda vx tiene que ser negativa
-			if (vxIntelligence > 0) {
-				vxIntelligence = vxIntelligence * -1;
-			}
-			vx = vxIntelligence;
-		}
-		if (outLeft) {
-			// mover hacia la derecha vx tiene que ser positiva
-			if (vxIntelligence < 0) {
-				vxIntelligence = vxIntelligence * -1;
-			}
-			vx = vxIntelligence;
+		if (vy == 0) {
+			vyIntelligence = vyIntelligence * 1;
+			vy = vyIntelligence;
 		}
 
 	}
 	else {
-		vx = 0;
+		vy = 0;
 	}
 
 
@@ -76,6 +62,6 @@ void Enemy::impacted() {
 }
 
 
-void Enemy::draw(float scrollX) {
-	animation->draw(x - scrollX, y);
+void Enemy::draw(float scrollY) {
+	animation->draw(x, y - scrollY);
 }
