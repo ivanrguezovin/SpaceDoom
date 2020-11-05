@@ -236,6 +236,13 @@ void GameLayer::update() {
 			}
 		}
 	}
+	for (auto const& tile : tiles) {
+		if (player->isOverlap(tile)) {
+			cout << "Reinicio" << endl;
+			init();
+			return;
+		}
+	}
 
 	// Colisiones , Enemy - Projectile
 

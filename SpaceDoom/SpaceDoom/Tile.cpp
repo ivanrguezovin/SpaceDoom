@@ -16,14 +16,6 @@ Tile::Tile(string filename, float x, float y, float vy, Game* game)
 void Tile::update() {
 	if (vy != 0) {
 		y = y + vy;
-		/*
-		if (y + height / 2 < 0) {
-			y = HEIGHT + height / 2;
-		}
-		if (y - height / 2 > HEIGHT) {
-			y = 0 - height / 2;
-		}
-		*/
 	}
 }
 
