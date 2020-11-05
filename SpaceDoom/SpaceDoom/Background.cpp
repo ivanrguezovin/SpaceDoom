@@ -16,7 +16,7 @@ Background::Background(string filename, float x, float y, float vy, Game* game)
 
 void Background::update() {
 	if (vy != 0) {
-		y = y + vy;
+		y = y - vy;
 
 		if (y + height / 2 < 0) {
 			y = HEIGHT + height / 2;
