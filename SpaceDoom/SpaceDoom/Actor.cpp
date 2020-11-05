@@ -50,6 +50,38 @@ bool Actor::isOverlap(Actor* actor) {
 	return overlap;
 }
 
+bool Actor::isOverlapTile(Actor* tile) {
+	bool overlap = false;
+	int possibleMovement = vy;
+
+	int topDynamic = y - height / 2;
+	int downDynamic = y + height / 2;
+	int rightDynamic = x + width / 2;
+	int leftDynamic = x - width / 2;
+
+	int topStatic = tile->y - tile->height / 2;
+	int downStatic = tile->y + tile->height / 2;
+	int rightStatic = tile->x + tile->width / 2;
+	int leftStatic = tile->x - tile->width / 2;
+
+	if ((topDynamic + vy) <= downStatic
+		&& downDynamic > topStatic
+		&& leftDynamic < rightStatic
+		&& rightDynamic > leftStatic) {
+
+		// Comprobamos si la distancia al estático es menor
+		// que nuestro movimientoPosible actual
+		if (possibleMovement <= downStatic - topDynamic) {
+			// La distancia es MENOR que nuestro movimiento posible
+			// Tenemos que actualizar el movimiento posible a uno menor
+			possibleMovement = downStatic - topDynamic;
+			overlap = true;
+		}
+	}
+
+	return overlap;
+}
+
 bool Actor::isInRender(float scrollY) {
 	if (x - width / 2 <= WIDTH && x + width / 2 >= 0 &&
 		(y - scrollY) - height / 2 <= HEIGHT && (y - scrollY) + height / 2 >= 0) {

@@ -14,6 +14,7 @@ void Space::update() {
 
         // Aun no se han detectado choques
         actor->collisionDown = false;
+        actor->collisionUp = false;
         actor->outLeft = true;
         actor->outRight = true;
 
@@ -131,6 +132,14 @@ void Space::updateMoveTop(Actor* dynamicAct) {
                     // La distancia es MENOR que nuestro movimiento posible
                     // Tenemos que actualizar el movimiento posible a uno menor
                     possibleMovement = downStatic - topDynamic;
+                    dynamicAct->collisionUp = true;
+
+                    if (rightDynamic <= rightStatic) {
+                        dynamicAct->outRight = false;
+                    }
+                    if (leftDynamic >= leftStatic) {
+                        dynamicAct->outLeft = false;
+                    }
                 }
             }
         }

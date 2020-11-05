@@ -237,7 +237,7 @@ void GameLayer::update() {
 		}
 	}
 	for (auto const& tile : tiles) {
-		if (player->isOverlap(tile)) {
+		if (player->isOverlapTile(tile)) {
 			cout << "Reinicio" << endl;
 			init();
 			return;

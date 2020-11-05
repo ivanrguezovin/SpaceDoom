@@ -9,12 +9,13 @@ public:
 	~Actor();
 	virtual void draw(float scrollY = 0);
 	bool isOverlap(Actor* actor);
-	bool isOverlapUpDown(Actor* actor);
+	bool isOverlapTile(Actor* actor);
 	bool containsPoint(int pointX, int pointY); // contiene punto
 	bool isInRender(float scrollY = 0);
 	bool outRight;
 	bool outLeft;
 	bool collisionDown;
+	bool collisionUp;
 
 	bool clicked; // Está pulsado
 	SDL_Texture* texture;
