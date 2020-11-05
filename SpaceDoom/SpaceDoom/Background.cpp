@@ -38,7 +38,7 @@ void Background::draw(float scrollY) {
 			backgroundAux->y = y - height;
 		}
 		// zona sin cubrir por la derecha
-		if (y + height / 2 < WIDTH) {
+		if (y + height / 2 < HEIGHT) {
 			// pintar aux por la derecha
 			backgroundAux->y = y + height;
 		}

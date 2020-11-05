@@ -3,26 +3,29 @@ D:\UNIOVI-EII\4-SEMESTRE 1\SEV\C++\SpaceDoom\SpaceDoom\SpaceDoom\Audio.h(6,10): 
 D:\UNIOVI-EII\4-SEMESTRE 1\SEV\C++\SpaceDoom\SpaceDoom\SpaceDoom\GameLayer.cpp(30,66): warning C4305: 'argumento': truncamiento de 'double' a 'float'
 D:\UNIOVI-EII\4-SEMESTRE 1\SEV\C++\SpaceDoom\SpaceDoom\SpaceDoom\GameLayer.cpp(61,13): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
 D:\UNIOVI-EII\4-SEMESTRE 1\SEV\C++\SpaceDoom\SpaceDoom\SpaceDoom\GameLayer.cpp(62,13): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
-D:\UNIOVI-EII\4-SEMESTRE 1\SEV\C++\SpaceDoom\SpaceDoom\SpaceDoom\GameLayer.cpp(310,24): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-D:\UNIOVI-EII\4-SEMESTRE 1\SEV\C++\SpaceDoom\SpaceDoom\SpaceDoom\GameLayer.cpp(317,24): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-D:\UNIOVI-EII\4-SEMESTRE 1\SEV\C++\SpaceDoom\SpaceDoom\SpaceDoom\GameLayer.cpp(402,35): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-D:\UNIOVI-EII\4-SEMESTRE 1\SEV\C++\SpaceDoom\SpaceDoom\SpaceDoom\GameLayer.cpp(402,26): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-D:\UNIOVI-EII\4-SEMESTRE 1\SEV\C++\SpaceDoom\SpaceDoom\SpaceDoom\GameLayer.cpp(405,39): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-D:\UNIOVI-EII\4-SEMESTRE 1\SEV\C++\SpaceDoom\SpaceDoom\SpaceDoom\GameLayer.cpp(407,43): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-D:\UNIOVI-EII\4-SEMESTRE 1\SEV\C++\SpaceDoom\SpaceDoom\SpaceDoom\GameLayer.cpp(407,34): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-D:\UNIOVI-EII\4-SEMESTRE 1\SEV\C++\SpaceDoom\SpaceDoom\SpaceDoom\GameLayer.cpp(410,42): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-D:\UNIOVI-EII\4-SEMESTRE 1\SEV\C++\SpaceDoom\SpaceDoom\SpaceDoom\GameLayer.cpp(410,33): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-D:\UNIOVI-EII\4-SEMESTRE 1\SEV\C++\SpaceDoom\SpaceDoom\SpaceDoom\GameLayer.cpp(417,51): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-D:\UNIOVI-EII\4-SEMESTRE 1\SEV\C++\SpaceDoom\SpaceDoom\SpaceDoom\GameLayer.cpp(417,42): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-D:\UNIOVI-EII\4-SEMESTRE 1\SEV\C++\SpaceDoom\SpaceDoom\SpaceDoom\GameLayer.cpp(418,39): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-D:\UNIOVI-EII\4-SEMESTRE 1\SEV\C++\SpaceDoom\SpaceDoom\SpaceDoom\GameLayer.cpp(429,43): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-D:\UNIOVI-EII\4-SEMESTRE 1\SEV\C++\SpaceDoom\SpaceDoom\SpaceDoom\GameLayer.cpp(429,34): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-D:\UNIOVI-EII\4-SEMESTRE 1\SEV\C++\SpaceDoom\SpaceDoom\SpaceDoom\GameLayer.cpp(432,42): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-D:\UNIOVI-EII\4-SEMESTRE 1\SEV\C++\SpaceDoom\SpaceDoom\SpaceDoom\GameLayer.cpp(432,33): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-D:\UNIOVI-EII\4-SEMESTRE 1\SEV\C++\SpaceDoom\SpaceDoom\SpaceDoom\GameLayer.cpp(439,35): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-D:\UNIOVI-EII\4-SEMESTRE 1\SEV\C++\SpaceDoom\SpaceDoom\SpaceDoom\GameLayer.cpp(439,26): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-D:\UNIOVI-EII\4-SEMESTRE 1\SEV\C++\SpaceDoom\SpaceDoom\SpaceDoom\GameLayer.cpp(445,43): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-D:\UNIOVI-EII\4-SEMESTRE 1\SEV\C++\SpaceDoom\SpaceDoom\SpaceDoom\GameLayer.cpp(445,34): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-D:\UNIOVI-EII\4-SEMESTRE 1\SEV\C++\SpaceDoom\SpaceDoom\SpaceDoom\GameLayer.cpp(448,42): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-D:\UNIOVI-EII\4-SEMESTRE 1\SEV\C++\SpaceDoom\SpaceDoom\SpaceDoom\GameLayer.cpp(448,33): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+D:\UNIOVI-EII\4-SEMESTRE 1\SEV\C++\SpaceDoom\SpaceDoom\SpaceDoom\GameLayer.cpp(313,24): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+D:\UNIOVI-EII\4-SEMESTRE 1\SEV\C++\SpaceDoom\SpaceDoom\SpaceDoom\GameLayer.cpp(320,24): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+D:\UNIOVI-EII\4-SEMESTRE 1\SEV\C++\SpaceDoom\SpaceDoom\SpaceDoom\GameLayer.cpp(405,35): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+D:\UNIOVI-EII\4-SEMESTRE 1\SEV\C++\SpaceDoom\SpaceDoom\SpaceDoom\GameLayer.cpp(405,26): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+D:\UNIOVI-EII\4-SEMESTRE 1\SEV\C++\SpaceDoom\SpaceDoom\SpaceDoom\GameLayer.cpp(408,39): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+D:\UNIOVI-EII\4-SEMESTRE 1\SEV\C++\SpaceDoom\SpaceDoom\SpaceDoom\GameLayer.cpp(410,43): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+D:\UNIOVI-EII\4-SEMESTRE 1\SEV\C++\SpaceDoom\SpaceDoom\SpaceDoom\GameLayer.cpp(410,34): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+D:\UNIOVI-EII\4-SEMESTRE 1\SEV\C++\SpaceDoom\SpaceDoom\SpaceDoom\GameLayer.cpp(413,42): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+D:\UNIOVI-EII\4-SEMESTRE 1\SEV\C++\SpaceDoom\SpaceDoom\SpaceDoom\GameLayer.cpp(413,33): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+D:\UNIOVI-EII\4-SEMESTRE 1\SEV\C++\SpaceDoom\SpaceDoom\SpaceDoom\GameLayer.cpp(420,51): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+D:\UNIOVI-EII\4-SEMESTRE 1\SEV\C++\SpaceDoom\SpaceDoom\SpaceDoom\GameLayer.cpp(420,42): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+D:\UNIOVI-EII\4-SEMESTRE 1\SEV\C++\SpaceDoom\SpaceDoom\SpaceDoom\GameLayer.cpp(421,39): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+D:\UNIOVI-EII\4-SEMESTRE 1\SEV\C++\SpaceDoom\SpaceDoom\SpaceDoom\GameLayer.cpp(432,43): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+D:\UNIOVI-EII\4-SEMESTRE 1\SEV\C++\SpaceDoom\SpaceDoom\SpaceDoom\GameLayer.cpp(432,34): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+D:\UNIOVI-EII\4-SEMESTRE 1\SEV\C++\SpaceDoom\SpaceDoom\SpaceDoom\GameLayer.cpp(435,42): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+D:\UNIOVI-EII\4-SEMESTRE 1\SEV\C++\SpaceDoom\SpaceDoom\SpaceDoom\GameLayer.cpp(435,33): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+D:\UNIOVI-EII\4-SEMESTRE 1\SEV\C++\SpaceDoom\SpaceDoom\SpaceDoom\GameLayer.cpp(442,35): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+D:\UNIOVI-EII\4-SEMESTRE 1\SEV\C++\SpaceDoom\SpaceDoom\SpaceDoom\GameLayer.cpp(442,26): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+D:\UNIOVI-EII\4-SEMESTRE 1\SEV\C++\SpaceDoom\SpaceDoom\SpaceDoom\GameLayer.cpp(448,43): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+D:\UNIOVI-EII\4-SEMESTRE 1\SEV\C++\SpaceDoom\SpaceDoom\SpaceDoom\GameLayer.cpp(448,34): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+D:\UNIOVI-EII\4-SEMESTRE 1\SEV\C++\SpaceDoom\SpaceDoom\SpaceDoom\GameLayer.cpp(451,42): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+D:\UNIOVI-EII\4-SEMESTRE 1\SEV\C++\SpaceDoom\SpaceDoom\SpaceDoom\GameLayer.cpp(451,33): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+  Tile.cpp
+D:\UNIOVI-EII\4-SEMESTRE 1\SEV\C++\SpaceDoom\SpaceDoom\SpaceDoom\Tile.cpp(18,9): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+  Generando código...
   SpaceDoom.vcxproj -> D:\UNIOVI-EII\4-SEMESTRE 1\SEV\C++\SpaceDoom\SpaceDoom\Debug\SpaceDoom.exe
