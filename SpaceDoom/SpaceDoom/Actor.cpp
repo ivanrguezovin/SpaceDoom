@@ -40,10 +40,10 @@ void Actor::draw(float scrollY) {
 
 bool Actor::isOverlap(Actor* actor) {
 	bool overlap = false;
-	if (actor->x - actor->width / 2 <= x + width / 2
-		&& actor->x + actor->width / 2 >= x - width / 2
-		&& actor->y + actor->height / 2 >= y - height / 2
-		&& actor->y - actor->height / 2 <= y + height / 2) {
+	if (actor->x - actor->width / 12 <= x + width / 2
+		&& actor->x + actor->width / 12 >= x - width / 2
+		&& actor->y + actor->height / 12 >= y - height / 2
+		&& actor->y - actor->height / 12 <= y + height / 2) {
 
 		overlap = true;
 	}
@@ -54,13 +54,13 @@ bool Actor::isOverlapTile(Actor* tile) {
 	bool overlap = false;
 	int possibleMovement = vy;
 
-	int topDynamic = y - height / 2;
-	int downDynamic = y + height / 2;
-	int rightDynamic = x + width / 2;
-	int leftDynamic = x - width / 2;
+	int topDynamic = y - height / 8;
+	int downDynamic = y + height / 8;
+	int rightDynamic = x + width / 8;
+	int leftDynamic = x - width / 8;
 
-	int topStatic = tile->y - tile->height / 2;
-	int downStatic = tile->y + tile->height / 2;
+	int topStatic = tile->y - tile->height;
+	int downStatic = tile->y + tile->height;
 	int rightStatic = tile->x + tile->width / 2;
 	int leftStatic = tile->x - tile->width / 2;
 
