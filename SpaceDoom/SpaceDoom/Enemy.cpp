@@ -1,15 +1,15 @@
 #include "Enemy.h"
 
 Enemy::Enemy(float x, float y, Game* game)
-	: Actor("res/enemigo.png", x, y, 36, 40, game) {
+	: Actor("res/closeEnemy.png", x, y, 160, 160, game) {
 
 	state = game->stateMoving;
 
-	aDying = new Animation("res/enemigo_morir.png", width, height,
-		280, 40, 6, 8, false, game);
+	aDying = new Animation("res/closeEnemy_hit.png", width, height,
+		2400, 160, 1, 15, false, game);
 
-	aMoving = new Animation("res/enemigo_movimiento.png", width, height,
-		108, 40, 6, 3, true, game);
+	aMoving = new Animation("res/closeEnemy_move.png", width, height,
+		2400, 160, 1, 15, true, game);
 	animation = aMoving;
 
 	vy = 0;

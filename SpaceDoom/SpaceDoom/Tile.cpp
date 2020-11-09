@@ -25,5 +25,4 @@ void Tile::draw(float scrollY) {
 	if (tileAux != NULL) {
 		tileAux->draw();
 	}
-
 }
