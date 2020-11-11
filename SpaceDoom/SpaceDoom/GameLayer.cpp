@@ -110,6 +110,14 @@ void GameLayer::loadMapObject(char character, float x, float y)
 		space->addStaticActor(tile);
 		break;
 	}
+	case 'D': {
+		DestroyableTile* tile = new DestroyableTile("res/destroyTile.png", x, y, 1, game);
+		// modificación para empezar a contar desde el suelo.
+		tile->y = tile->y - tile->height / 2;
+		tiles.push_back(tile);
+		space->addStaticActor(tile);
+		break;
+	}
 	}
 }
 
@@ -250,6 +258,7 @@ void GameLayer::update() {
 	// Colisiones , Enemy - Projectile
 
 	list<Enemy*> deleteEnemies;
+	list<Tile*> deleteTiles;
 	list<Projectile*> deleteProjectiles;
 	for (auto const& projectile : projectiles) {
 		if (projectile->isInRender(scrollY) == false || projectile->vy == 0) {
@@ -283,6 +292,31 @@ void GameLayer::update() {
 		}
 	}
 
+	for (auto const& tile : tiles) {
+		for (auto const& projectile : projectiles) {
+			if (tile->isOverlap(projectile)) {
+				bool pInList = std::find(deleteProjectiles.begin(),
+					deleteProjectiles.end(),
+					projectile) != deleteProjectiles.end();
+
+				if (!pInList) {
+					deleteProjectiles.push_back(projectile);
+				}
+				if (tile->destroyByProjectile()) {
+					bool tInList = std::find(deleteTiles.begin(),
+						deleteTiles.end(),
+						tile) != deleteTiles.end();
+
+					if (!tInList) {
+						deleteTiles.push_back(tile);
+					}
+					points++;
+					textPoints->content = to_string(points);
+				}
+			}
+		}
+	}
+
 	for (auto const& enemy : enemies) {
 		if (enemy->state == game->stateDead) {
 			bool eInList = std::find(deleteEnemies.begin(),
@@ -300,6 +334,12 @@ void GameLayer::update() {
 		space->removeDynamicActor(delEnemy);
 	}
 	deleteEnemies.clear();
+
+	for (auto const& delTile : deleteTiles) {
+		tiles.remove(delTile);
+		space->removeDynamicActor(delTile);
+	}
+	deleteTiles.clear();
 
 	for (auto const& delProjectile : deleteProjectiles) {
 		projectiles.remove(delProjectile);

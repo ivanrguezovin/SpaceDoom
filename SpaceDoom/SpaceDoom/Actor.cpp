@@ -40,10 +40,10 @@ void Actor::draw(float scrollY) {
 
 bool Actor::isOverlap(Actor* actor) {
 	bool overlap = false;
-	if (actor->x - actor->width / 12 <= x + width / 2
-		&& actor->x + actor->width / 12 >= x - width / 2
-		&& actor->y + actor->height / 12 >= y - height / 2
-		&& actor->y - actor->height / 12 <= y + height / 2) {
+	if (actor->x - actor->width / 2 <= x + width / 2
+		&& actor->x + actor->width / 2 >= x - width / 2
+		&& actor->y + actor->height / 2 >= y - height / 2
+		&& actor->y - actor->height / 2 <= y + height / 2) {
 
 		overlap = true;
 	}

@@ -1,7 +1,7 @@
 #include "Enemy.h"
 
 Enemy::Enemy(float x, float y, Game* game)
-	: Actor("res/closeEnemy.png", x, y, 121, 121, game) {
+	: Actor("res/closeEnemy.png", x, y, 100, 100, game) {
 
 	state = game->stateMoving;
 

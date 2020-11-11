@@ -9,5 +9,6 @@ public:
 	void draw(float scrollY = 0) override; // Va a sobrescribir
 	virtual void update();
 	Tile* tileAux = nullptr;
+	virtual bool destroyByProjectile();
 };
 

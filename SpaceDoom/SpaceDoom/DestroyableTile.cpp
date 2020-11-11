@@ -21,3 +21,7 @@ void DestroyableTile::draw(float scrollY) {
 		tileAux->draw();
 	}
 }
+
+bool DestroyableTile::destroyByProjectile() {
+	return true;
+}

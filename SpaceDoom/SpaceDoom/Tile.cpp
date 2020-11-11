@@ -26,3 +26,7 @@ void Tile::draw(float scrollY) {
 		tileAux->draw();
 	}
 }
+
+bool Tile::destroyByProjectile() {
+	return false;
+}
