@@ -39,12 +39,12 @@ public:
 	Actor* buttonShoot;
 	Actor* buttonJump;
 
-	Tile* cup; // Elemento de final de nivel
 	Space* space;
 	float scrollY;
 	float scrollX;
 	int mapWidth;
 	list<Tile*> tiles;
+	list<Tile*> goals;
 
 	Audio* audioBackground;
 	Text* textPoints;

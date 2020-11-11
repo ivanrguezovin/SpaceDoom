@@ -41,6 +41,8 @@ void GameLayer::init() {
 
 	enemies.clear(); // Vaciar por si reiniciamos el juego
 	projectiles.clear(); // Vaciar por si reiniciamos el juego
+	goals.clear();
+	tiles.clear();
 
 	loadMap("res/" + to_string(game->currentLevel) + ".txt");
 }
@@ -77,9 +79,10 @@ void GameLayer::loadMapObject(char character, float x, float y)
 {
 	switch (character) {
 	case 'C': {
-		cup = new Tile("res/meta.png", x, y, 1, game);
+		Tile* cup = new Tile("res/meta.png", x, y, 1, game);
 		// modificación para empezar a contar desde el suelo.
 		cup->y = cup->y - cup->height / 2;
+		goals.push_back(cup);
 		space->addDynamicActor(cup); // Realmente no hace falta
 		break;
 	}
@@ -185,16 +188,20 @@ void GameLayer::update() {
 	}
 
 	// Nivel superado
-	if (cup->isOverlap(player)) {
-		game->currentLevel++;
-		if (game->currentLevel > game->finalLevel) {
-			game->currentLevel = 0;
+	for (auto const& goal : goals) {
+		if (goal->isOverlap(player)) {
+			game->currentLevel++;
+			if (game->currentLevel > game->finalLevel) {
+				game->currentLevel = 0;
+			}
+			message = new Actor("res/mensaje_ganar.png", WIDTH * 0.5, HEIGHT * 0.5,
+				WIDTH, HEIGHT, game);
+			pause = true;
+			init();
+			break;
 		}
-		message = new Actor("res/mensaje_ganar.png", WIDTH * 0.5, HEIGHT * 0.5,
-			WIDTH, HEIGHT, game);
-		pause = true;
-		init();
 	}
+	
 
 	// Jugador se sale de los límites de la pantalla
 	if (player->x > WIDTH + 20) {
@@ -331,7 +338,9 @@ void GameLayer::draw() {
 	for (auto const& projectile : projectiles) {
 		projectile->draw(scrollY);
 	}
-	cup->draw(scrollY);
+	for (auto const& goal : goals) {
+		goal->draw(scrollY);
+	}
 	player->draw(scrollY);
 	for (auto const& enemy : enemies) {
 		enemy->draw(scrollY);
