@@ -36,8 +36,8 @@ public:
 	// Elementos de interfaz
 	SDL_GameController* gamePad;
 	Pad* pad;
-	Actor* buttonJump;
 	Actor* buttonShoot;
+	Actor* buttonJump;
 
 	Tile* cup; // Elemento de final de nivel
 	Space* space;
@@ -48,11 +48,12 @@ public:
 
 	Audio* audioBackground;
 	Text* textPoints;
+	Text* textBullets;
 	int points;
-	int newEnemyTime = 0;
 	Player* player;
 	Background* background;
 	Actor* backgroundPoints;
+	Actor* backgroundBullets;
 	list<Enemy*> enemies;
 	list<Projectile*> projectiles;
 

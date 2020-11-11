@@ -52,7 +52,7 @@ bool Actor::isOverlap(Actor* actor) {
 
 bool Actor::isOverlapTile(Actor* tile) {
 	bool overlap = false;
-	int possibleMovement = vy;
+	int possibleMovement = tile->vy;
 
 	int topDynamic = y - height / 8;
 	int downDynamic = y + height / 8;

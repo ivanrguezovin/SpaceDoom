@@ -23,17 +23,21 @@ void GameLayer::init() {
 	scrollX = 0;
 	tiles.clear();
 
-	audioBackground = new Audio("res/musica_ambiente.mp3", true);
-	audioBackground->play();
+	//audioBackground = new Audio("res/musica_ambiente.mp3", true);
+	//audioBackground->play();
 
 	points = 0;
-	textPoints = new Text("hola", WIDTH * 0.92, HEIGHT * 0.04, game);
+	textPoints = new Text("Puntos", WIDTH * 0.92, HEIGHT * 0.04, game);
 	textPoints->content = to_string(points);
+
+	textBullets = new Text("Balas", WIDTH * 0.79, HEIGHT * 0.04, game);
 
 
 	background = new Background("res/fondo_2.png", WIDTH * 0.5, HEIGHT * 0.5, -1, game);
 	backgroundPoints = new Actor("res/icono_puntos.png",
-		WIDTH * 0.85, HEIGHT * 0.05, 24, 24, game);
+		WIDTH * 0.85, HEIGHT * 0.04, 24, 24, game);
+	backgroundBullets = new Actor("res/bullet.png",
+		WIDTH * 0.73, HEIGHT * 0.04, 61, 64, game);
 
 	enemies.clear(); // Vaciar por si reiniciamos el juego
 	projectiles.clear(); // Vaciar por si reiniciamos el juego
@@ -92,6 +96,7 @@ void GameLayer::loadMapObject(char character, float x, float y)
 		// modificación para empezar a contar desde el suelo.
 		player->y = player->y - player->height / 2;
 		space->addDynamicActor(player);
+		textBullets->content = to_string(player->bullets);
 		break;
 	}
 	case '#': {
@@ -155,6 +160,7 @@ void GameLayer::processControls() {
 	if (controlShoot) {
 		Projectile* newProjectile = player->shoot();
 		if (newProjectile != NULL) {
+			textBullets->content = to_string(player->bullets);
 			space->addDynamicActor(newProjectile);
 			projectiles.push_back(newProjectile);
 		}
@@ -224,7 +230,6 @@ void GameLayer::update() {
 	}
 	for (auto const& tile : tiles) {
 		if (player->isOverlapTile(tile)) {
-			cout << "Reinicio" << endl;
 			init();
 			return;
 		}
@@ -259,13 +264,9 @@ void GameLayer::update() {
 				if (!pInList) {
 					deleteProjectiles.push_back(projectile);
 				}
-
-
 				enemy->impacted();
 				points++;
 				textPoints->content = to_string(points);
-
-
 			}
 		}
 	}
@@ -335,6 +336,9 @@ void GameLayer::draw() {
 
 	backgroundPoints->draw();
 	textPoints->draw();
+
+	backgroundBullets->draw();
+	textBullets->draw();
 
 	// HUD
 	if (game->input == game->inputMouse) {

@@ -76,12 +76,13 @@ void Player::moveX(float axis) {
 
 Projectile* Player::shoot() {
 
-	if (shootTime == 0) {
+	if (shootTime == 0 && bullets > 0) {
 		state = game->stateShooting;
 		audioShoot->play();
 		aShooting->currentFrame = 0; //"Rebobinar" aniamción
 		shootTime = shootCadence;
 		Projectile* projectile = new Projectile(x, y, game);
+		bullets--;
 		return projectile;
 	}
 	else {

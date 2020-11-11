@@ -12,7 +12,7 @@ public:
 	Projectile* shoot();
 	void update();
 	void moveX(float axis);
-	void draw(float scrollX = 0) override; // Va a sobrescribir
+	void draw(float scrollY = 0) override; // Va a sobrescribir
 	void loseLife();
 	int lifes = 3;
 	int invulnerableTime = 0;
@@ -26,5 +26,6 @@ public:
 	Audio* audioShoot;
 	int shootCadence = 30;
 	int shootTime = 0;
+	int bullets = 8;
 };
 
