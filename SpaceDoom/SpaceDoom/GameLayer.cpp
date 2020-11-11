@@ -77,7 +77,7 @@ void GameLayer::loadMapObject(char character, float x, float y)
 {
 	switch (character) {
 	case 'C': {
-		cup = new Tile("res/copa.png", x, y, game);
+		cup = new Tile("res/meta.png", x, y, 1, game);
 		// modificación para empezar a contar desde el suelo.
 		cup->y = cup->y - cup->height / 2;
 		space->addDynamicActor(cup); // Realmente no hace falta
@@ -223,6 +223,9 @@ void GameLayer::update() {
 		if (player->isOverlap(enemy)) {
 			player->loseLife();
 			if (player->lifes <= 0) {
+				message = new Actor("res/mensaje_perder.png", WIDTH * 0.5, HEIGHT * 0.5,
+					WIDTH, HEIGHT, game);
+				pause = true;
 				init();
 				return;
 			}
