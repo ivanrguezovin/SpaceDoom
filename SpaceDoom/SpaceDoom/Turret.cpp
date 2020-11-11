@@ -12,6 +12,9 @@ void Turret::update() {
 	if (vy != 0) {
 		y = y + vy;
 	}
+	if (shootTime > 0) {
+		shootTime--;
+	}
 }
 
 void Turret::draw(float scrollY) {
@@ -19,5 +22,16 @@ void Turret::draw(float scrollY) {
 
 	if (tileAux != NULL) {
 		tileAux->draw();
+	}
+}
+
+ProjectileTurret* Turret::shoot() {
+	if (shootTime == 0) {
+		shootTime = shootCadence;
+		ProjectileTurret* projectile = new ProjectileTurret(x, y, game);
+		return projectile;
+	}
+	else {
+		return NULL;
 	}
 }

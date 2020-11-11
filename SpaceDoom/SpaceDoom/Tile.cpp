@@ -30,3 +30,8 @@ void Tile::draw(float scrollY) {
 bool Tile::destroyByProjectile() {
 	return false;
 }
+
+
+ProjectileTurret* Tile::shoot() {
+	return NULL;
+}

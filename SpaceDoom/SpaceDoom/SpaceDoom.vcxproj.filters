@@ -43,6 +43,12 @@
     <Filter Include="Archivos de origen\actores\tiles">
       <UniqueIdentifier>{9c696a70-e5f1-4174-92bd-b5e2c7634dfc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de encabezado\actores\projectiles">
+      <UniqueIdentifier>{9da0ba43-9ad9-46fe-8a83-a76464167ab0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\actores\projectiles">
+      <UniqueIdentifier>{a32af0c9-1d3e-4f32-952c-7c86d7b258a2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -78,9 +84,6 @@
     <ClCompile Include="Tile.cpp">
       <Filter>Archivos de origen\actores\tiles</Filter>
     </ClCompile>
-    <ClCompile Include="Projectile.cpp">
-      <Filter>Archivos de origen\actores</Filter>
-    </ClCompile>
     <ClCompile Include="MenuLayer.cpp">
       <Filter>Archivos de origen\layers</Filter>
     </ClCompile>
@@ -101,6 +104,15 @@
     </ClCompile>
     <ClCompile Include="CommonTile.cpp">
       <Filter>Archivos de origen\actores\tiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Projectile.cpp">
+      <Filter>Archivos de origen\actores\projectiles</Filter>
+    </ClCompile>
+    <ClCompile Include="ProjectileTurret.cpp">
+      <Filter>Archivos de origen\actores\projectiles</Filter>
+    </ClCompile>
+    <ClCompile Include="ProjectileEnemy.cpp">
+      <Filter>Archivos de origen\actores\projectiles</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -134,9 +146,6 @@
     <ClInclude Include="Tile.h">
       <Filter>Archivos de encabezado\actores\tiles</Filter>
     </ClInclude>
-    <ClInclude Include="Projectile.h">
-      <Filter>Archivos de encabezado\actores</Filter>
-    </ClInclude>
     <ClInclude Include="GameLayer.h">
       <Filter>Archivos de encabezado\layers</Filter>
     </ClInclude>
@@ -157,6 +166,15 @@
     </ClInclude>
     <ClInclude Include="CommonTile.h">
       <Filter>Archivos de encabezado\actores\tiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Projectile.h">
+      <Filter>Archivos de encabezado\actores\projectiles</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectileEnemy.h">
+      <Filter>Archivos de encabezado\actores\projectiles</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectileTurret.h">
+      <Filter>Archivos de encabezado\actores\projectiles</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -41,8 +41,9 @@ void GameLayer::init() {
 
 	enemies.clear(); // Vaciar por si reiniciamos el juego
 	projectiles.clear(); // Vaciar por si reiniciamos el juego
+	projectilesEnemy.clear(); // Vaciar por si reiniciamos el juego
+	projectilesTurret.clear(); // Vaciar por si reiniciamos el juego
 	goals.clear();
-	tiles.clear();
 
 	loadMap("res/" + to_string(game->currentLevel) + ".txt");
 }
@@ -112,6 +113,14 @@ void GameLayer::loadMapObject(char character, float x, float y)
 	}
 	case 'D': {
 		DestroyableTile* tile = new DestroyableTile("res/destroyTile.png", x, y, 1, game);
+		// modificación para empezar a contar desde el suelo.
+		tile->y = tile->y - tile->height / 2;
+		tiles.push_back(tile);
+		space->addStaticActor(tile);
+		break;
+	}
+	case 'T': {
+		Turret* tile = new Turret("res/destroyTile.png", x, y, 1, game);
 		// modificación para empezar a contar desde el suelo.
 		tile->y = tile->y - tile->height / 2;
 		tiles.push_back(tile);
@@ -224,12 +233,22 @@ void GameLayer::update() {
 	player->update();
 	for (auto const& enemy : enemies) {
 		enemy->update();
+		/*ProjectileEnemy* penemigo = enemy->shoot();
+		if (penemigo != NULL) {
+			space->addDynamicActor(penemigo);
+			projectilesEnemy.push_back(penemigo);
+		}*/
 	}
 	for (auto const& projectile : projectiles) {
 		projectile->update();
 	}
 	for (auto const& tile : tiles) {
 		tile->update();
+		ProjectileTurret* pTurret = tile->shoot();
+		if (pTurret != NULL) {
+			space->addDynamicActor(pTurret);
+			projectilesTurret.push_back(pTurret);
+		}
 	}
 
 
@@ -260,6 +279,9 @@ void GameLayer::update() {
 	list<Enemy*> deleteEnemies;
 	list<Tile*> deleteTiles;
 	list<Projectile*> deleteProjectiles;
+	list<ProjectileEnemy*> deleteProjectilesEnemy;
+	list<ProjectileTurret*> deleteProjectilesTurret;
+
 	for (auto const& projectile : projectiles) {
 		if (projectile->isInRender(scrollY) == false || projectile->vy == 0) {
 
@@ -272,7 +294,30 @@ void GameLayer::update() {
 			}
 		}
 	}
+	for (auto const& projectile : projectilesEnemy) {
+		if (projectile->isInRender(scrollY) == false || projectile->vy == 0) {
 
+			bool pInList = std::find(deleteProjectilesEnemy.begin(),
+				deleteProjectilesEnemy.end(),
+				projectile) != deleteProjectilesEnemy.end();
+
+			if (!pInList) {
+				deleteProjectilesEnemy.push_back(projectile);
+			}
+		}
+	}
+	for (auto const& projectile : projectilesTurret) {
+		if (projectile->isInRender(scrollY) == false || projectile->vy == 0) {
+
+			bool pInList = std::find(deleteProjectilesTurret.begin(),
+				deleteProjectilesTurret.end(),
+				projectile) != deleteProjectilesTurret.end();
+
+			if (!pInList) {
+				deleteProjectilesTurret.push_back(projectile);
+			}
+		}
+	}
 
 
 	for (auto const& enemy : enemies) {
@@ -317,6 +362,44 @@ void GameLayer::update() {
 		}
 	}
 
+	for (auto const& projectile : projectilesEnemy) {
+		if (player->isOverlap(projectile)) {
+			bool pInList = std::find(deleteProjectilesEnemy.begin(),
+				deleteProjectilesEnemy.end(),
+				projectile) != deleteProjectilesEnemy.end();
+
+			if (!pInList) {
+				deleteProjectilesEnemy.push_back(projectile);
+			}
+
+			player->loseLife();
+			if (player->lifes <= 0) {
+				init();
+				return;
+			}
+
+		}
+	}
+
+	for (auto const& projectile : projectilesTurret) {
+		if (player->isOverlap(projectile)) {
+			bool pInList = std::find(deleteProjectilesTurret.begin(),
+				deleteProjectilesTurret.end(),
+				projectile) != deleteProjectilesTurret.end();
+
+			if (!pInList) {
+				deleteProjectilesTurret.push_back(projectile);
+			}
+
+			player->loseLife();
+			if (player->lifes <= 0) {
+				init();
+				return;
+			}
+
+		}
+	}
+
 	for (auto const& enemy : enemies) {
 		if (enemy->state == game->stateDead) {
 			bool eInList = std::find(deleteEnemies.begin(),
@@ -348,6 +431,20 @@ void GameLayer::update() {
 	}
 	deleteProjectiles.clear();
 
+	for (auto const& delProjectile : deleteProjectilesEnemy) {
+		projectilesEnemy.remove(delProjectile);
+		space->removeDynamicActor(delProjectile);
+		delete delProjectile;
+	}
+	deleteProjectilesEnemy.clear();
+
+	for (auto const& delProjectile : deleteProjectilesTurret) {
+		projectilesTurret.remove(delProjectile);
+		space->removeDynamicActor(delProjectile);
+		delete delProjectile;
+	}
+	deleteProjectilesTurret.clear();
+
 
 	//cout << "update GameLayer" << endl;
 }
@@ -378,6 +475,12 @@ void GameLayer::draw() {
 	}
 
 	for (auto const& projectile : projectiles) {
+		projectile->draw(scrollY);
+	}
+	for (auto const& projectile : projectilesEnemy) {
+		projectile->draw(scrollY);
+	}
+	for (auto const& projectile : projectilesTurret) {
 		projectile->draw(scrollY);
 	}
 	for (auto const& goal : goals) {

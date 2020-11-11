@@ -6,6 +6,8 @@
 
 #include "Enemy.h"
 #include "Projectile.h"
+#include "ProjectileTurret.h"
+#include "ProjectileEnemy.h"
 #include "Text.h"
 #include "Tile.h"
 #include "Turret.h"
@@ -59,6 +61,8 @@ public:
 	Actor* backgroundBullets;
 	list<Enemy*> enemies;
 	list<Projectile*> projectiles;
+	list<ProjectileEnemy*> projectilesEnemy;
+	list<ProjectileTurret*> projectilesTurret;
 
 	bool controlContinue = false;
 	bool controlShoot = false;
