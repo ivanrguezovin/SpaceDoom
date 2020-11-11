@@ -10,6 +10,9 @@ Enemy::Enemy(float x, float y, Game* game)
 
 	aMoving = new Animation("res/closeEnemy_move.png", width, height,
 		2400, 160, 1, 15, true, game);
+
+	aHiting = new Animation("res/closeEnemy_hit.png", width, height,
+		2400, 160, 1, 15, true, game);
 	animation = aMoving;
 
 	vy = 0;
@@ -37,6 +40,9 @@ void Enemy::update() {
 	if (state == game->stateDying) {
 		animation = aDying;
 	}
+	if (state == game->stateHiting) {
+		animation = aHiting;
+	}
 
 	// Establecer velocidad
 	if (state != game->stateDying) {
@@ -50,9 +56,6 @@ void Enemy::update() {
 	else {
 		vy = 0;
 	}
-
-
-
 }
 
 void Enemy::impacted() {

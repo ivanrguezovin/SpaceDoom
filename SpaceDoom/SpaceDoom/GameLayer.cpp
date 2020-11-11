@@ -228,6 +228,7 @@ void GameLayer::update() {
 	// Colisiones
 	for (auto const& enemy : enemies) {
 		if (player->isOverlap(enemy)) {
+			enemy->state = game->stateHiting;
 			player->loseLife();
 			if (player->lifes <= 0) {
 				message = new Actor("res/mensaje_perder.png", WIDTH * 0.5, HEIGHT * 0.5,
@@ -238,6 +239,7 @@ void GameLayer::update() {
 			}
 		}
 	}
+
 	for (auto const& tile : tiles) {
 		if (player->isOverlapTile(tile)) {
 			init();

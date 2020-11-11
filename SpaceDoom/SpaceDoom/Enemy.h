@@ -14,6 +14,7 @@ public:
 	int state;
 	Animation* aDying;
 	Animation* aMoving;
+	Animation* aHiting;
 	Animation* animation; // Referencia a la animación mostrada
 };
 
