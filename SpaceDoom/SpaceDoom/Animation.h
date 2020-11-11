@@ -25,6 +25,6 @@ public:
 	float frameWidth; // Ancho de un fotograma
 	float frameHeigt; // Alto de un fotograma
 	int updateFrecuence = 0;
-	int updateTime = 0;
+	int updateTime = 0; 
 };
 
