@@ -5,8 +5,8 @@ Enemy::Enemy(float x, float y, Game* game)
 
 	state = game->stateMoving;
 
-	aDying = new Animation("res/closeEnemy_hit.png", width, height,
-		2400, 160, 1, 15, false, game);
+	aDying = new Animation("res/closeEnemy_die.png", width, height,
+		835, 65, 1, 13, false, game);
 
 	aMoving = new Animation("res/closeEnemy_move.png", width, height,
 		2400, 160, 1, 15, true, game);
