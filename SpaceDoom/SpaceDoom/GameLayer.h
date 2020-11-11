@@ -8,6 +8,9 @@
 #include "Projectile.h"
 #include "Text.h"
 #include "Tile.h"
+#include "Turret.h"
+#include "CommonTile.h"
+#include "DestroyableTile.h"
 #include "Pad.h"
 
 #include "Audio.h"
