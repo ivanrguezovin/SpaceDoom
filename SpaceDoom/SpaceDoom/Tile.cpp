@@ -1,12 +1,11 @@
 #include "Tile.h"
 
 Tile::Tile(string filename, float x, float y, Game* game)
-	: Actor(filename, x, y, 40, 40, game) {
-	
+	: Actor(filename, x, y, 85, 85, game) {
 }
 
 Tile::Tile(string filename, float x, float y, float vy, Game* game)
-	: Actor(filename, x, y, 40, 40, game) {
+	: Actor(filename, x, y, 85, 85, game) {
 	this->vy = vy;
 	if (vy != 0) {
 		tileAux = new Tile(filename, x, y + HEIGHT, game);

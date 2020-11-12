@@ -1,7 +1,7 @@
-#include "Enemy.h"
+#include "ShooterEnemy.h"
 
-Enemy::Enemy(string filename, float x, float y, Game* game)
-	: Actor(filename, x, y, 100, 100, game) {
+ShooterEnemy::ShooterEnemy(string filename, float x, float y, Game* game)
+	: Enemy(filename, x, y, game) {
 
 	state = game->stateMoving;
 
@@ -9,10 +9,10 @@ Enemy::Enemy(string filename, float x, float y, Game* game)
 		835, 65, 1, 13, false, game);
 
 	aMoving = new Animation("res/closeEnemy_move.png", width, height,
-		1024, 128, 1, 8, true, game);
+		2400, 160, 1, 15, true, game);
 
 	aHiting = new Animation("res/closeEnemy_hit.png", width, height,
-		512, 128, 1, 4, false, game);
+		2400, 160, 1, 15, true, game);
 	animation = aMoving;
 
 	vy = 0;
@@ -21,7 +21,10 @@ Enemy::Enemy(string filename, float x, float y, Game* game)
 
 }
 
-void Enemy::update() {
+void ShooterEnemy::update() {
+	if (shootTime > 0) {
+		shootTime--;
+	}
 	// Actualizar la animación
 	bool endAnimation = animation->update();
 
@@ -61,17 +64,24 @@ void Enemy::update() {
 	}
 }
 
-void Enemy::impacted() {
+void ShooterEnemy::impacted() {
 	if (state != game->stateDying) {
 		state = game->stateDying;
 	}
 }
 
 
-void Enemy::draw(float scrollY) {
+void ShooterEnemy::draw(float scrollY) {
 	animation->draw(x, y - scrollY);
 }
 
-ProjectileEnemy* Enemy::shoot() {
-	return NULL;
+ProjectileEnemy* ShooterEnemy::shoot() {
+	if (shootTime == 0) {
+		shootTime = shootCadence;
+		ProjectileEnemy* projectile = new ProjectileEnemy(x, y, game);
+		return projectile;
+	}
+	else {
+		return NULL;
+	}
 }

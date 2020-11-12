@@ -1,7 +1,7 @@
-#include "Enemy.h"
+#include "CloseEnemy.h"
 
-Enemy::Enemy(string filename, float x, float y, Game* game)
-	: Actor(filename, x, y, 100, 100, game) {
+CloseEnemy::CloseEnemy(string filename, float x, float y, Game* game)
+	: Enemy(filename, x, y, game) {
 
 	state = game->stateMoving;
 
@@ -9,10 +9,10 @@ Enemy::Enemy(string filename, float x, float y, Game* game)
 		835, 65, 1, 13, false, game);
 
 	aMoving = new Animation("res/closeEnemy_move.png", width, height,
-		1024, 128, 1, 8, true, game);
+		768, 128, 1, 6, true, game);
 
 	aHiting = new Animation("res/closeEnemy_hit.png", width, height,
-		512, 128, 1, 4, false, game);
+		512, 128, 4, 4, false, game);
 	animation = aMoving;
 
 	vy = 0;
@@ -21,7 +21,7 @@ Enemy::Enemy(string filename, float x, float y, Game* game)
 
 }
 
-void Enemy::update() {
+void CloseEnemy::update() {
 	// Actualizar la animación
 	bool endAnimation = animation->update();
 
@@ -32,7 +32,8 @@ void Enemy::update() {
 			state = game->stateDead;
 		}
 		if (state == game->stateHiting) {
-			state == game->stateMoving;
+			state = game->stateMoving;
+			animation = aMoving;
 		}
 	}
 
@@ -61,17 +62,13 @@ void Enemy::update() {
 	}
 }
 
-void Enemy::impacted() {
+void CloseEnemy::impacted() {
 	if (state != game->stateDying) {
 		state = game->stateDying;
 	}
 }
 
 
-void Enemy::draw(float scrollY) {
+void CloseEnemy::draw(float scrollY) {
 	animation->draw(x, y - scrollY);
-}
-
-ProjectileEnemy* Enemy::shoot() {
-	return NULL;
 }

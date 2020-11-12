@@ -146,6 +146,7 @@
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Audio.cpp" />
     <ClCompile Include="Background.cpp" />
+    <ClCompile Include="CloseEnemy.cpp" />
     <ClCompile Include="CommonTile.cpp" />
     <ClCompile Include="DestroyableTile.cpp" />
     <ClCompile Include="Enemy.cpp" />
@@ -159,6 +160,7 @@
     <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="ProjectileEnemy.cpp" />
     <ClCompile Include="ProjectileTurret.cpp" />
+    <ClCompile Include="ShooterEnemy.cpp" />
     <ClCompile Include="Space.cpp" />
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="Tile.cpp" />
@@ -169,6 +171,7 @@
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Audio.h" />
     <ClInclude Include="Background.h" />
+    <ClInclude Include="CloseEnemy.h" />
     <ClInclude Include="CommonTile.h" />
     <ClInclude Include="DestroyableTile.h" />
     <ClInclude Include="Enemy.h" />
@@ -181,6 +184,7 @@
     <ClInclude Include="Projectile.h" />
     <ClInclude Include="ProjectileEnemy.h" />
     <ClInclude Include="ProjectileTurret.h" />
+    <ClInclude Include="ShooterEnemy.h" />
     <ClInclude Include="Space.h" />
     <ClInclude Include="Text.h" />
     <ClInclude Include="Tile.h" />

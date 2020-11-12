@@ -114,6 +114,12 @@
     <ClCompile Include="ProjectileEnemy.cpp">
       <Filter>Archivos de origen\actores\projectiles</Filter>
     </ClCompile>
+    <ClCompile Include="ShooterEnemy.cpp">
+      <Filter>Archivos de origen\actores\enemigos</Filter>
+    </ClCompile>
+    <ClCompile Include="CloseEnemy.cpp">
+      <Filter>Archivos de origen\actores\enemigos</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -175,6 +181,12 @@
     </ClInclude>
     <ClInclude Include="ProjectileTurret.h">
       <Filter>Archivos de encabezado\actores\projectiles</Filter>
+    </ClInclude>
+    <ClInclude Include="ShooterEnemy.h">
+      <Filter>Archivos de encabezado\actores\enemigos</Filter>
+    </ClInclude>
+    <ClInclude Include="CloseEnemy.h">
+      <Filter>Archivos de encabezado\actores\enemigos</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

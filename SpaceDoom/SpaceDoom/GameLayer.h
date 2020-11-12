@@ -5,6 +5,8 @@
 #include "Background.h"
 
 #include "Enemy.h"
+#include "CloseEnemy.h"
+#include "ShooterEnemy.h"
 #include "Projectile.h"
 #include "ProjectileTurret.h"
 #include "ProjectileEnemy.h"

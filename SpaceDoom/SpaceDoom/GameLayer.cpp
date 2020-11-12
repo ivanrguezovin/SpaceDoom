@@ -88,7 +88,7 @@ void GameLayer::loadMapObject(char character, float x, float y)
 		break;
 	}
 	case 'E': {
-		Enemy* enemy = new Enemy(x, y, game);
+		CloseEnemy* enemy = new CloseEnemy("res/closeEnemy.png",x, y, game);
 		// modificación para empezar a contar desde el suelo.
 		enemy->y = enemy->y - enemy->height / 2;
 		enemies.push_back(enemy);
@@ -120,7 +120,7 @@ void GameLayer::loadMapObject(char character, float x, float y)
 		break;
 	}
 	case 'T': {
-		Turret* tile = new Turret("res/destroyTile.png", x, y, 1, game);
+		Turret* tile = new Turret("res/turret.png", x, y, 1, game);
 		// modificación para empezar a contar desde el suelo.
 		tile->y = tile->y - tile->height / 2;
 		tiles.push_back(tile);
@@ -360,6 +360,29 @@ void GameLayer::update() {
 				}
 			}
 		}
+		for (auto const& projectile : projectilesEnemy) {
+			if (tile->isOverlap(projectile)) {
+				bool pInList = std::find(deleteProjectilesEnemy.begin(),
+					deleteProjectilesEnemy.end(),
+					projectile) != deleteProjectilesEnemy.end();
+
+				if (!pInList) {
+					deleteProjectilesEnemy.push_back(projectile);
+				}
+			}
+		}
+		/*
+		for (auto const& projectile : projectilesTurret) {
+			if (tile->isOverlap(projectile)) {
+				bool pInList = std::find(deleteProjectilesTurret.begin(),
+					deleteProjectilesTurret.end(),
+					projectile) != deleteProjectilesTurret.end();
+
+				if (!pInList) {
+					deleteProjectilesTurret.push_back(projectile);
+				}
+			}
+		}*/
 	}
 
 	for (auto const& projectile : projectilesEnemy) {
