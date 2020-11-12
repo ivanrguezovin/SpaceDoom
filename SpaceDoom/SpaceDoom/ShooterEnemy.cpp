@@ -9,11 +9,7 @@ ShooterEnemy::ShooterEnemy(string filename, float x, float y, Game* game)
 		835, 65, 1, 13, false, game);
 
 	aMoving = new Animation("res/closeEnemy_move.png", width, height,
-		2400, 160, 1, 15, true, game);
-
-	aHiting = new Animation("res/closeEnemy_hit.png", width, height,
-		2400, 160, 1, 15, true, game);
-	animation = aMoving;
+		768, 128, 1, 6, true, game);
 
 	vy = 0;
 	vyIntelligence = 1;
@@ -34,9 +30,6 @@ void ShooterEnemy::update() {
 		if (state == game->stateDying) {
 			state = game->stateDead;
 		}
-		if (state == game->stateHiting) {
-			state == game->stateMoving;
-		}
 	}
 
 
@@ -45,9 +38,6 @@ void ShooterEnemy::update() {
 	}
 	if (state == game->stateDying) {
 		animation = aDying;
-	}
-	if (state == game->stateHiting) {
-		animation = aHiting;
 	}
 
 	// Establecer velocidad

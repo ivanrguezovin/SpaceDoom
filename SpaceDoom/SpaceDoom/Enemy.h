@@ -18,7 +18,7 @@ public:
 	Animation* aHiting;
 	Animation* animation; // Referencia a la animación mostrada
 	virtual ProjectileEnemy* shoot();
-	int shootCadence = 50;
+	int shootCadence = 100;
 	int shootTime = 0;
 };
 

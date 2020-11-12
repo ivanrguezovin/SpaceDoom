@@ -95,6 +95,14 @@ void GameLayer::loadMapObject(char character, float x, float y)
 		space->addDynamicActor(enemy);
 		break;
 	}
+	case 'S': {
+		ShooterEnemy* enemy = new ShooterEnemy("res/closeEnemy.png", x, y, game);
+		// modificación para empezar a contar desde el suelo.
+		enemy->y = enemy->y - enemy->height / 2;
+		enemies.push_back(enemy);
+		space->addDynamicActor(enemy);
+		break;
+	}
 	case '1': {
 		player = new Player(x, y, game);
 		// modificación para empezar a contar desde el suelo.
@@ -233,11 +241,11 @@ void GameLayer::update() {
 	player->update();
 	for (auto const& enemy : enemies) {
 		enemy->update();
-		/*ProjectileEnemy* penemigo = enemy->shoot();
+		ProjectileEnemy* penemigo = enemy->shoot();
 		if (penemigo != NULL) {
 			space->addDynamicActor(penemigo);
 			projectilesEnemy.push_back(penemigo);
-		}*/
+		}
 	}
 	for (auto const& projectile : projectiles) {
 		projectile->update();
@@ -291,6 +299,17 @@ void GameLayer::update() {
 
 			if (!pInList) {
 				deleteProjectiles.push_back(projectile);
+			}
+		}
+		for (auto const& tile : goals) {
+			if (projectile->isOverlap(tile)) {
+				bool pInList = std::find(deleteProjectiles.begin(),
+					deleteProjectiles.end(),
+					projectile) != deleteProjectiles.end();
+
+				if (!pInList) {
+					deleteProjectiles.push_back(projectile);
+				}
 			}
 		}
 	}
