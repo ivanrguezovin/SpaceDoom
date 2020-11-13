@@ -1,10 +1,10 @@
 #include "DestroyableTile.h"
 
-DestroyableTile::DestroyableTile(string filename, float x, float y, float vy, Game* game)
-	: Tile(filename, x, y, vy, game) {
+DestroyableTile::DestroyableTile(string filename, float x, float y, float vy, float width, float height, Game* game)
+	: Tile(filename, x, y, vy, width, height, game) {
 	this->vy = vy;
 	if (vy != 0) {
-		tileAux = new Tile(filename, x, y + HEIGHT, game);
+		tileAux = new Tile(filename, x, y + HEIGHT, width, height, game);
 	}
 }
 

@@ -82,7 +82,7 @@ void GameLayer::loadMapObject(char character, float x, float y)
 {
 	switch (character) {
 	case 'C': {
-		Tile* cup = new Tile("res/meta.png", x, y, 1, game);
+		Tile* cup = new Tile("res/meta.png", x, y, 1, 40, 40, game);
 		// modificación para empezar a contar desde el suelo.
 		cup->y = cup->y - cup->height / 2;
 		goals.push_back(cup);
@@ -115,7 +115,7 @@ void GameLayer::loadMapObject(char character, float x, float y)
 		break;
 	}
 	case '#': {
-		CommonTile* tile = new CommonTile("res/tile.png", x, y, 1, game);
+		CommonTile* tile = new CommonTile("res/tile.png", x, y, 1, 40, 40, game);
 		// modificación para empezar a contar desde el suelo.
 		tile->y = tile->y - tile->height / 2;
 		tiles.push_back(tile);
@@ -123,7 +123,7 @@ void GameLayer::loadMapObject(char character, float x, float y)
 		break;
 	}
 	case 'D': {
-		DestroyableTile* tile = new DestroyableTile("res/destroyTile.png", x, y, 1, game);
+		DestroyableTile* tile = new DestroyableTile("res/destroyTile.png", x, y, 1, 40, 40, game);
 		// modificación para empezar a contar desde el suelo.
 		tile->y = tile->y - tile->height / 2;
 		tiles.push_back(tile);
@@ -131,7 +131,7 @@ void GameLayer::loadMapObject(char character, float x, float y)
 		break;
 	}
 	case 'T': {
-		Turret* tile = new Turret("res/turret.png", x, y, 1, game);
+		Turret* tile = new Turret("res/turret.png", x, y, 1, 85, 85, game);
 		// modificación para empezar a contar desde el suelo.
 		tile->y = tile->y - tile->height / 2;
 		tiles.push_back(tile);

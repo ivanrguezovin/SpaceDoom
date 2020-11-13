@@ -1,14 +1,14 @@
 #include "Tile.h"
 
-Tile::Tile(string filename, float x, float y, Game* game)
-	: Actor(filename, x, y, 85, 85, game) {
+Tile::Tile(string filename, float x, float y, float width, float height, Game* game)
+	: Actor(filename, x, y, width, height, game) {
 }
 
-Tile::Tile(string filename, float x, float y, float vy, Game* game)
-	: Actor(filename, x, y, 85, 85, game) {
+Tile::Tile(string filename, float x, float y, float vy, float width, float height, Game* game)
+	: Actor(filename, x, y, width, height, game) {
 	this->vy = vy;
 	if (vy != 0) {
-		tileAux = new Tile(filename, x, y + HEIGHT, game);
+		tileAux = new Tile(filename, x, y + HEIGHT, width, height, game);
 	}
 }
 
