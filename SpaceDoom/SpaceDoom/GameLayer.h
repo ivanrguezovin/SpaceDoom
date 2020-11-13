@@ -3,22 +3,32 @@
 #include "Layer.h"
 #include "Player.h"
 #include "Background.h"
+#include "Pad.h"
+#include "Space.h"
 
 #include "Enemy.h"
 #include "CloseEnemy.h"
 #include "ShooterEnemy.h"
+
+#include "Item.h"
+#include "ExtraLife.h"
+#include "ExtraAmmo.h"
+/*
+#include "Invencible.h"
+#include "Nuclear.h"
+*/
+
 #include "Projectile.h"
 #include "ProjectileTurret.h"
 #include "ProjectileEnemy.h"
+
+#include "Audio.h"
 #include "Text.h"
+
 #include "Tile.h"
 #include "Turret.h"
 #include "CommonTile.h"
 #include "DestroyableTile.h"
-#include "Pad.h"
-
-#include "Audio.h"
-#include "Space.h" // importar
 
 #include <fstream> // Leer ficheros
 #include <sstream> // Leer líneas / String
@@ -52,7 +62,8 @@ public:
 	int mapWidth;
 	list<Tile*> tiles;
 	list<Tile*> goals;
-
+	list<Item*> items;
+	Audio* audioBoost;
 	Audio* audioBackground;
 	Text* textPoints;
 	Text* textBullets;

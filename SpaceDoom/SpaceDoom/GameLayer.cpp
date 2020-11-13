@@ -46,6 +46,7 @@ void GameLayer::init() {
 	projectilesEnemy.clear(); // Vaciar por si reiniciamos el juego
 	projectilesTurret.clear(); // Vaciar por si reiniciamos el juego
 	goals.clear();
+	items.clear();
 
 	loadMap("res/" + to_string(game->currentLevel) + ".txt");
 }
@@ -82,11 +83,11 @@ void GameLayer::loadMapObject(char character, float x, float y)
 {
 	switch (character) {
 	case 'C': {
-		Tile* cup = new Tile("res/meta.png", x, y, 1, 40, 40, game);
+		CommonTile* cup = new CommonTile("res/meta.png", x, y, 1, 40, 40, game);
 		// modificación para empezar a contar desde el suelo.
 		cup->y = cup->y - cup->height / 2;
 		goals.push_back(cup);
-		space->addDynamicActor(cup); // Realmente no hace falta
+		space->addStaticActor(cup); // Realmente no hace falta
 		break;
 	}
 	case 'E': {
@@ -138,6 +139,37 @@ void GameLayer::loadMapObject(char character, float x, float y)
 		space->addStaticActor(tile);
 		break;
 	}
+	case 'A': {
+		ExtraAmmo* item = new ExtraAmmo("res/extraAmmo.png", x, y, 40, 40, 1, game);
+		// modificación para empezar a contar desde el suelo.
+		item->y = item->y - item->height / 2;
+		items.push_back(item);
+		space->addStaticActor(item);
+		break;
+	}
+	case 'L': {
+		ExtraLife* item = new ExtraLife("res/corazon.png", x, y, 44, 36, 1, game);
+		// modificación para empezar a contar desde el suelo.
+		item->y = item->y - item->height / 2;
+		items.push_back(item);
+		space->addStaticActor(item);
+		break;
+	}/*
+	case 'N': {
+		Nuclear* item = new Nuclear("res/turret.png", x, y, 1, 40, 40, game);
+		// modificación para empezar a contar desde el suelo.
+		item->y = item->y - item->height / 2;
+		items.push_back(item);
+		space->addStaticActor(item);
+		break;
+	}case 'I': {
+		Invencible* item = new Invencible("res/turret.png", x, y, 1, 40, 40, game);
+		// modificación para empezar a contar desde el suelo.
+		item->y = item->y - item->height / 2;
+		items.push_back(item);
+		space->addStaticActor(item);
+		break;
+	}*/
 	}
 }
 
@@ -253,6 +285,9 @@ void GameLayer::update() {
 	for (auto const& projectile : projectiles) {
 		projectile->update();
 	}
+	for (auto const& item : items) {
+		item->update();
+	}
 	for (auto const& tile : tiles) {
 		tile->update();
 		ProjectileTurret* pTurret = tile->shoot();
@@ -260,6 +295,9 @@ void GameLayer::update() {
 			space->addDynamicActor(pTurret);
 			projectilesTurret.push_back(pTurret);
 		}
+	}
+	for (auto const& tile : goals) {
+		tile->update();
 	}
 
 
@@ -286,17 +324,77 @@ void GameLayer::update() {
 		}
 	}
 
-	// Colisiones , Enemy - Projectile
-
 	list<Enemy*> deleteEnemies;
 	list<Tile*> deleteTiles;
 	list<Projectile*> deleteProjectiles;
+	list<Item*> deleteItems;
 	list<ProjectileEnemy*> deleteProjectilesEnemy;
 	list<ProjectileTurret*> deleteProjectilesTurret;
 
+	for (auto const& item : items) {
+		for (auto const& goal : goals) {
+			if (item->isOverlapTile(goal)) {
+				bool pInList = std::find(deleteItems.begin(),
+					deleteItems.end(),
+					item) != deleteItems.end();
+
+				if (!pInList) {
+					deleteItems.push_back(item);
+				}
+			}
+		}
+	}
+
+	for (auto const& item : items) {
+		if (player->isOverlap(item)) {
+			bool pInList = std::find(deleteItems.begin(),
+				deleteItems.end(),
+				item) != deleteItems.end();
+
+			if (!pInList) {
+				deleteItems.push_back(item);
+			}
+			int* p = &points;
+			int* s = &(player->bullets);
+			int* l = &(player->lifes);
+			int pUp = 5;
+			int numEnemigos = 0;
+			for (auto const& enemy : enemies) {
+				if (enemy->isInRender()) {
+					numEnemigos += 1;
+				}
+			}
+			pUp = item->boosteo(p, s, l, textPoints, textBullets, textLifes, numEnemigos);
+			if (pUp == 3) { //Nuclear
+				audioBoost = new Audio("res/efecto_explosion.wav", false);
+				audioBoost->play();
+				for (auto const& enemy : enemies) {
+					if (enemy->isInRender()) {
+						deleteEnemies.push_back(enemy);
+					}
+				}
+			}
+			else if (pUp == 0) { //Coin
+				audioBoost = new Audio("res/coin.wav", false);
+				audioBoost->play();
+			}
+			else if (pUp == 2) {//ExtraAmmo
+				audioBoost = new Audio("res/ammo.wav", false);
+				audioBoost->play();
+			}
+			else if (pUp == 1) { //ExtraLife
+				audioBoost = new Audio("res/ammo.wav", false);
+				audioBoost->play();
+			}
+			else if (pUp == 4) { //Invencibilidad
+				audioBoost = new Audio("res/ammo.wav", false);
+				audioBoost->play();
+			}
+		}
+	}
+
 	for (auto const& projectile : projectiles) {
 		if (projectile->isInRender(scrollY) == false || projectile->vy == 0) {
-
 			bool pInList = std::find(deleteProjectiles.begin(),
 				deleteProjectiles.end(),
 				projectile) != deleteProjectiles.end();
@@ -460,11 +558,19 @@ void GameLayer::update() {
 		}
 	}
 
+	// Borrado de las listas de elementos eliminados
+
 	for (auto const& delEnemy : deleteEnemies) {
 		enemies.remove(delEnemy);
 		space->removeDynamicActor(delEnemy);
 	}
 	deleteEnemies.clear();
+
+	for (auto const& delItem : deleteItems) {
+		items.remove(delItem);
+		space->removeDynamicActor(delItem);
+	}
+	deleteItems.clear();
 
 	for (auto const& delTile : deleteTiles) {
 		tiles.remove(delTile);
@@ -521,7 +627,9 @@ void GameLayer::draw() {
 	for (auto const& tile : tiles) {
 		tile->draw(scrollY);
 	}
-
+	for (auto const& item : items) {
+		item->draw(scrollY);
+	}
 	for (auto const& projectile : projectiles) {
 		projectile->draw(scrollY);
 	}
