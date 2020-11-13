@@ -13,8 +13,8 @@
 #include "Item.h"
 #include "ExtraLife.h"
 #include "ExtraAmmo.h"
-//#include "Invencible.h"
-//#include "Coin.h"
+#include "Invencible.h"
+#include "Coin.h"
 #include "Nuclear.h"
 
 #include "Projectile.h"

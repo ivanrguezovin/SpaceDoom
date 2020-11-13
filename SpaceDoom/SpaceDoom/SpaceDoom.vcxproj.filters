@@ -141,8 +141,14 @@
     <ClCompile Include="ExtraAmmo.cpp">
       <Filter>Archivos de origen\actores\items</Filter>
     </ClCompile>
+    <ClCompile Include="Coin.cpp">
+      <Filter>Archivos de origen\actores\items</Filter>
+    </ClCompile>
+    <ClCompile Include="Invencible.cpp">
+      <Filter>Archivos de origen\actores\items</Filter>
+    </ClCompile>
     <ClCompile Include="Nuclear.cpp">
-      <Filter>Archivos de origen</Filter>
+      <Filter>Archivos de origen\actores\items</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -222,7 +228,13 @@
       <Filter>Archivos de encabezado\actores\items</Filter>
     </ClInclude>
     <ClInclude Include="Nuclear.h">
-      <Filter>Archivos de encabezado</Filter>
+      <Filter>Archivos de encabezado\actores\items</Filter>
+    </ClInclude>
+    <ClInclude Include="Invencible.h">
+      <Filter>Archivos de encabezado\actores\items</Filter>
+    </ClInclude>
+    <ClInclude Include="Coin.h">
+      <Filter>Archivos de encabezado\actores\items</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

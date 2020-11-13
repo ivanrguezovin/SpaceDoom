@@ -20,8 +20,8 @@ Player::Player(float x, float y, Game* game)
 
 
 void Player::update() {
-	if (invulnerableTime > 0) {
-		invulnerableTime--;
+	if (invencibleTime > 0) {
+		invencibleTime--;
 	}
 
 	bool endAnimation = animation->update();
@@ -91,22 +91,23 @@ Projectile* Player::shoot() {
 }
 
 void Player::draw(float scrollX) {
-	if (invulnerableTime == 0) {
+	/*
+	if (invencibleTime == 0) {
 		animation->draw(x - scrollX, y);
 	}
 	else {
-		if (invulnerableTime % 10 >= 0 && invulnerableTime % 10 <= 5) {
+		if (invencibleTime % 10 >= 0 && invencibleTime % 10 <= 5) {
 			animation->draw(x - scrollX, y);
 		}
-	}
+	}*/
+	animation->draw(x - scrollX, y);
 }
 
 void Player::loseLife() {
-	if (invulnerableTime <= 0) {
+	if (invencibleTime <= 0) {
 		if (lifes > 0) {
 			lifes--;
-			invulnerableTime = 100;
-			// 100 actualizaciones 
+			invencibleTime = 800;
 		}
 	}
 }

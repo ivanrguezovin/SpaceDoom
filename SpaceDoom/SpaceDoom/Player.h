@@ -15,7 +15,6 @@ public:
 	void draw(float scrollY = 0) override; // Va a sobrescribir
 	void loseLife();
 	int lifes = 3;
-	int invulnerableTime = 0;
 	int orientation;
 	int state;
 	Animation* aIdle;
@@ -27,5 +26,6 @@ public:
 	int shootCadence = 30;
 	int shootTime = 0;
 	int bullets = 8;
+	int invencibleTime = 0;
 };
 

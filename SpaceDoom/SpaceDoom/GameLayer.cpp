@@ -150,8 +150,8 @@ void GameLayer::loadMapObject(char character, float x, float y)
 		items.push_back(item);
 		space->addStaticActor(item);
 		break;
-	}/*case 'I': {
-		Invencible* item = new Invencible("res/icono_recolectable.png", x, y, 32, 32, 1, game);
+	}case 'I': {
+		Invencible* item = new Invencible("res/icono_puntos.png", x, y, 40, 40, 1, game);
 		item->y = item->y - item->height / 2;
 		items.push_back(item);
 		space->addStaticActor(item);
@@ -162,7 +162,7 @@ void GameLayer::loadMapObject(char character, float x, float y)
 		items.push_back(item);
 		space->addStaticActor(item);
 		break;
-	}*/
+	}
 	}
 }
 
@@ -240,6 +240,15 @@ void GameLayer::update() {
 		return;
 	}
 
+	if (player->invencibleTime > 0) {
+		backgroundLifes = backgroundLifes = new Actor("res/corazonInvencible.png",
+			WIDTH * 0.08, HEIGHT * 0.95, 44, 36, game);
+	}
+	else {
+		backgroundLifes = new Actor("res/corazon.png",
+			WIDTH * 0.08, HEIGHT * 0.95, 44, 36, game);
+	}
+
 	// Nivel superado
 	for (auto const& goal : goals) {
 		if (goal->isOverlap(player)) {
@@ -297,23 +306,30 @@ void GameLayer::update() {
 	// Colisiones
 	for (auto const& enemy : enemies) {
 		if (player->isOverlap(enemy)) {
-			enemy->state = game->stateHiting;
-			player->loseLife();
-			textLifes->content = to_string(player->lifes);
-			if (player->lifes <= 0) {
-				message = new Actor("res/mensaje_perder.png", WIDTH * 0.5, HEIGHT * 0.5,
-					WIDTH, HEIGHT, game);
-				pause = true;
-				init();
-				return;
+			if (player->invencibleTime > 0) {
+				enemy->impacted();
+			}
+			else {
+				enemy->state = game->stateHiting;
+				player->loseLife();
+				textLifes->content = to_string(player->lifes);
+				if (player->lifes <= 0) {
+					message = new Actor("res/mensaje_perder.png", WIDTH * 0.5, HEIGHT * 0.5,
+						WIDTH, HEIGHT, game);
+					pause = true;
+					init();
+					return;
+				}
 			}
 		}
 	}
 
 	for (auto const& tile : tiles) {
 		if (player->isOverlapTile(tile)) {
-			init();
-			return;
+			if (player->invencibleTime == 0) {
+				init();
+				return;
+			}
 		}
 	}
 
@@ -390,6 +406,7 @@ void GameLayer::update() {
 				audioBoost->play();
 			}
 			else if (pUp == 4) { //Invencibilidad
+				player->invencibleTime = 800;
 				audioBoost = new Audio("res/ammo.wav", false);
 				audioBoost->play();
 			}
