@@ -35,3 +35,7 @@ ProjectileTurret* Turret::shoot() {
 		return NULL;
 	}
 }
+
+bool Turret::isTurret() {
+	return true;
+}

@@ -14,5 +14,6 @@ public:
 	virtual ProjectileTurret* shoot();
 	int shootCadence = 50;
 	int shootTime = 0;
+	virtual bool isTurret();
 };
 

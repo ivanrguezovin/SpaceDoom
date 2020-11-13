@@ -9,4 +9,5 @@ public:
 	void draw(float scrollY = 0) override; // Va a sobrescribir
 	void update() override;
 	ProjectileTurret* shoot() override;
+	bool isTurret() override;
 };

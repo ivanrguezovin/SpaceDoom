@@ -139,6 +139,9 @@
       <Filter>Archivos de origen\actores\items</Filter>
     </ClCompile>
     <ClCompile Include="ExtraAmmo.cpp">
+      <Filter>Archivos de origen\actores\items</Filter>
+    </ClCompile>
+    <ClCompile Include="Nuclear.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
@@ -216,6 +219,9 @@
       <Filter>Archivos de encabezado\actores\items</Filter>
     </ClInclude>
     <ClInclude Include="ExtraAmmo.h">
+      <Filter>Archivos de encabezado\actores\items</Filter>
+    </ClInclude>
+    <ClInclude Include="Nuclear.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

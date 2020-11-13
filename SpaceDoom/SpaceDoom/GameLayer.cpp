@@ -143,15 +143,21 @@ void GameLayer::loadMapObject(char character, float x, float y)
 		items.push_back(item);
 		space->addStaticActor(item);
 		break;
-	}/*
+	}
 	case 'N': {
-		Nuclear* item = new Nuclear("res/turret.png", x, y, 1, 40, 40, game);
+		Nuclear* item = new Nuclear("res/bomb.png", x, y, 40, 42, 1, game);
 		item->y = item->y - item->height / 2;
 		items.push_back(item);
 		space->addStaticActor(item);
 		break;
-	}case 'I': {
-		Invencible* item = new Invencible("res/turret.png", x, y, 1, 40, 40, game);
+	}/*case 'I': {
+		Invencible* item = new Invencible("res/icono_recolectable.png", x, y, 32, 32, 1, game);
+		item->y = item->y - item->height / 2;
+		items.push_back(item);
+		space->addStaticActor(item);
+		break;
+	}case 'M': {
+		Coin* item = new Coin("res/moneda.png", x, y, 40, 40, 1, game);
 		item->y = item->y - item->height / 2;
 		items.push_back(item);
 		space->addStaticActor(item);
@@ -351,13 +357,23 @@ void GameLayer::update() {
 					numEnemigos += 1;
 				}
 			}
+			for (auto const& tile : tiles) {
+				if (tile->isInRender() && (tile->destroyByProjectile() || tile->isTurret())) {
+					numEnemigos += 1;
+				}
+			}
 			pUp = item->boosteo(p, s, l, textPoints, textBullets, textLifes, numEnemigos);
 			if (pUp == 3) { //Nuclear
 				audioBoost = new Audio("res/efecto_explosion.wav", false);
 				audioBoost->play();
 				for (auto const& enemy : enemies) {
-					if (enemy->isInRender()) {
+					if (enemy->isInRender(scrollY)) {
 						deleteEnemies.push_back(enemy);
+					}
+				}
+				for (auto const& tile : tiles) {
+					if (tile->isInRender(scrollY) && (tile->destroyByProjectile() || tile->isTurret())) {
+						deleteTiles.push_back(tile);
 					}
 				}
 			}

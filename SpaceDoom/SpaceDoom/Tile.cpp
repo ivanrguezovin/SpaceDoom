@@ -30,6 +30,9 @@ bool Tile::destroyByProjectile() {
 	return false;
 }
 
+bool Tile::isTurret() {
+	return false;
+}
 
 ProjectileTurret* Tile::shoot() {
 	return NULL;
