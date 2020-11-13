@@ -56,11 +56,13 @@ public:
 	Audio* audioBackground;
 	Text* textPoints;
 	Text* textBullets;
+	Text* textLifes;
 	int points;
 	Player* player;
 	Background* background;
 	Actor* backgroundPoints;
 	Actor* backgroundBullets;
+	Actor* backgroundLifes;
 	list<Enemy*> enemies;
 	list<Projectile*> projectiles;
 	list<ProjectileEnemy*> projectilesEnemy;

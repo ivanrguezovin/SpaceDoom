@@ -29,7 +29,7 @@ void GameLayer::init() {
 	points = 0;
 	textPoints = new Text("Puntos", WIDTH * 0.92, HEIGHT * 0.04, game);
 	textPoints->content = to_string(points);
-
+	textLifes = new Text("Vidas", WIDTH * 0.15, HEIGHT * 0.94, game);
 	textBullets = new Text("Balas", WIDTH * 0.79, HEIGHT * 0.04, game);
 
 
@@ -38,6 +38,8 @@ void GameLayer::init() {
 		WIDTH * 0.85, HEIGHT * 0.04, 24, 24, game);
 	backgroundBullets = new Actor("res/bullet.png",
 		WIDTH * 0.73, HEIGHT * 0.04, 61, 64, game);
+	backgroundLifes = new Actor("res/corazon.png",
+		WIDTH * 0.08, HEIGHT * 0.95, 44, 36, game);
 
 	enemies.clear(); // Vaciar por si reiniciamos el juego
 	projectiles.clear(); // Vaciar por si reiniciamos el juego
@@ -109,6 +111,7 @@ void GameLayer::loadMapObject(char character, float x, float y)
 		player->y = player->y - player->height / 2;
 		space->addDynamicActor(player);
 		textBullets->content = to_string(player->bullets);
+		textLifes->content = to_string(player->lifes);
 		break;
 	}
 	case '#': {
@@ -265,6 +268,7 @@ void GameLayer::update() {
 		if (player->isOverlap(enemy)) {
 			enemy->state = game->stateHiting;
 			player->loseLife();
+			textLifes->content = to_string(player->lifes);
 			if (player->lifes <= 0) {
 				message = new Actor("res/mensaje_perder.png", WIDTH * 0.5, HEIGHT * 0.5,
 					WIDTH, HEIGHT, game);
@@ -415,6 +419,7 @@ void GameLayer::update() {
 			}
 
 			player->loseLife();
+			textLifes->content = to_string(player->lifes);
 			if (player->lifes <= 0) {
 				init();
 				return;
@@ -434,6 +439,7 @@ void GameLayer::update() {
 			}
 
 			player->loseLife();
+			textLifes->content = to_string(player->lifes);
 			if (player->lifes <= 0) {
 				init();
 				return;
@@ -538,6 +544,9 @@ void GameLayer::draw() {
 
 	backgroundBullets->draw();
 	textBullets->draw();
+
+	backgroundLifes->draw();
+	textLifes->draw();
 
 	// HUD
 	if (game->input == game->inputMouse) {
