@@ -54,7 +54,6 @@ public:
 	SDL_GameController* gamePad;
 	Pad* pad;
 	Actor* buttonShoot;
-	Actor* buttonJump;
 
 	Space* space;
 	float scrollY;
