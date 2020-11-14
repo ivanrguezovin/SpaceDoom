@@ -53,6 +53,7 @@ public:
 	Actor* buttonShoot;
 	Actor* buttonLeft;
 	Actor* buttonRight;
+	Actor* buttonPause;
 
 	Space* space;
 	float scrollY;

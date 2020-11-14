@@ -16,6 +16,7 @@ void GameLayer::init() {
 	buttonLeft = new Actor("res/boton_izqda.png", WIDTH * 0.1, HEIGHT * 0.85, 100, 100, game);
 	buttonRight = new Actor("res/boton_dcha.png", WIDTH * 0.35, HEIGHT * 0.85, 100, 100, game);
 	buttonShoot = new Actor("res/boton_disparo.png", WIDTH * 0.90, HEIGHT * 0.85, 100, 100, game);
+	buttonPause = new Actor("res/boton_pausa.png", WIDTH * 0.08, HEIGHT * 0.05, 40, 40, game);
 
 	space = new Space(1);
 	scrollY = 0;
@@ -677,6 +678,8 @@ void GameLayer::draw() {
 	backgroundLifes->draw();
 	textLifes->draw();
 
+	buttonPause->draw();
+
 	// HUD
 	if (game->input == game->inputMouse) {
 		buttonShoot->draw(); // NO TIENEN SCROLL, POSICION FIJA
@@ -694,9 +697,10 @@ void GameLayer::gamePadToControls(SDL_Event event) {
 
 	// Leer los botones
 	bool buttonA = SDL_GameControllerGetButton(gamePad, SDL_CONTROLLER_BUTTON_A);
+	bool buttonStart = SDL_GameControllerGetButton(gamePad, SDL_CONTROLLER_BUTTON_START);
 	// SDL_CONTROLLER_BUTTON_A, SDL_CONTROLLER_BUTTON_B
 	// SDL_CONTROLLER_BUTTON_X, SDL_CONTROLLER_BUTTON_Y
-	cout << "botón:" << buttonA << endl;
+	cout << "botón:" << buttonA << ", " << buttonStart << endl;
 	int stickX = SDL_GameControllerGetAxis(gamePad, SDL_CONTROLLER_AXIS_LEFTX);
 	cout << "stickX" << stickX << endl;
 
@@ -718,6 +722,12 @@ void GameLayer::gamePadToControls(SDL_Event event) {
 	else {
 		controlShoot = false;
 	}
+
+	if (buttonStart) {
+		pause = true;
+		message = new Actor("res/mensaje_pausa.png", WIDTH * 0.5, HEIGHT * 0.5,
+			WIDTH, HEIGHT, game);
+	}
 }
 
 
@@ -728,12 +738,6 @@ void GameLayer::mouseToControls(SDL_Event event) {
 	// Cada vez que hacen click
 	if (event.type == SDL_MOUSEBUTTONDOWN) {
 		controlContinue = true;
-		/*
-		if (pad->containsPoint(motionX, motionY)) {
-			pad->clicked = true;
-			// CLICK TAMBIEN TE MUEVE
-			controlMoveX = pad->getOrientationX(motionX);
-		}*/
 		if (buttonShoot->containsPoint(motionX, motionY)) {
 			controlShoot = true;
 		}
@@ -754,7 +758,6 @@ void GameLayer::mouseToControls(SDL_Event event) {
 		if (buttonShoot->containsPoint(motionX, motionY) == false) {
 			controlShoot = false;
 		}
-
 	}
 	// Cada vez que levantan el click
 	if (event.type == SDL_MOUSEBUTTONUP) {
@@ -772,7 +775,11 @@ void GameLayer::mouseToControls(SDL_Event event) {
 		if (buttonShoot->containsPoint(motionX, motionY)) {
 			controlShoot = false;
 		}
-
+		if (buttonPause->containsPoint(motionX, motionY)) {
+			pause = true;
+			message = new Actor("res/mensaje_pausa.png", WIDTH * 0.5, HEIGHT * 0.5,
+				WIDTH, HEIGHT, game);
+		}
 	}
 }
 
@@ -787,6 +794,16 @@ void GameLayer::keysToControls(SDL_Event event) {
 			break;
 		case SDLK_1:
 			game->scale();
+			break;
+		case SDLK_s: // pausa
+			if (pause) {
+				pause = false;
+			}
+			else {
+				pause = true;
+				message = new Actor("res/mensaje_pausa.png", WIDTH * 0.5, HEIGHT * 0.5,
+					WIDTH, HEIGHT, game);
+			}
 			break;
 		case SDLK_d: // derecha
 			controlMoveX = 1;
