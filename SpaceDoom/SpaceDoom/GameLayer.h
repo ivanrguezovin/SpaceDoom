@@ -3,7 +3,6 @@
 #include "Layer.h"
 #include "Player.h"
 #include "Background.h"
-#include "Pad.h"
 #include "Space.h"
 
 #include "Enemy.h"
@@ -51,8 +50,9 @@ public:
 	bool pause;
 	// Elementos de interfaz
 	SDL_GameController* gamePad;
-	Pad* pad;
 	Actor* buttonShoot;
+	Actor* buttonLeft;
+	Actor* buttonRight;
 
 	Space* space;
 	float scrollY;
@@ -81,7 +81,5 @@ public:
 	bool controlShoot = false;
 	int controlMoveY = 0;
 	int controlMoveX = 0;
-
-
 };
 
