@@ -28,8 +28,8 @@ void Background::update() {
 	}
 }
 
-void Background::draw(float scrollY) {
-	Actor::draw(); // llamar al metodo del hijo
+void Background::draw(float scrollX, float scrollY) {
+	Actor::draw(scrollX, scrollY); // llamar al metodo del hijo
 
 	if (backgroundAux != NULL) {
 		// zona sin cubrir por la izquierda

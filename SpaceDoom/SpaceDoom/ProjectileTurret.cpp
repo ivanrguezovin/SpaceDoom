@@ -12,6 +12,6 @@ void ProjectileTurret::update() {
 	animation->update();
 }
 
-void ProjectileTurret::draw(float scrollY) {
-	animation->draw(x, y + scrollY);
+void ProjectileTurret::draw(float scrollX, float scrollY) {
+	animation->draw(x - scrollX, y + scrollY);
 }

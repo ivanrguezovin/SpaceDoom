@@ -15,8 +15,8 @@ void Invencible::update() {
 	animation->update();
 }
 
-void Invencible::draw(float scrollY) {
-	animation->draw(x, y - scrollY);
+void Invencible::draw(float scrollX, float scrollY) {
+	animation->draw(x - scrollX, y - scrollY);
 }
 
 int Invencible::boosteo(int* points, int* shots, int* lifes, Text * textPoints, Text * textShots, Text * textLifes, int size) {

@@ -18,8 +18,8 @@ void Tile::update() {
 	}
 }
 
-void Tile::draw(float scrollY) {
-	Actor::draw(); // llamar al metodo del hijo
+void Tile::draw(float scrollX, float scrollY) {
+	Actor::draw(scrollX,scrollY); // llamar al metodo del hijo
 
 	if (tileAux != NULL) {
 		tileAux->draw();

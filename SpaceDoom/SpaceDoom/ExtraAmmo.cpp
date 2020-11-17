@@ -15,8 +15,8 @@ void ExtraAmmo::update() {
 	animation->update();
 }
 
-void ExtraAmmo::draw(float scrollY) {
-	animation->draw(x, y - scrollY);
+void ExtraAmmo::draw(float scrollX, float scrollY) {
+	animation->draw(x - scrollX, y - scrollY);
 }
 
 int ExtraAmmo::boosteo(int* points, int* shots, int* lifes, Text * textPoints, Text * textShots, Text * textLifes, int size) {

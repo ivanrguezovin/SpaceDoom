@@ -90,7 +90,7 @@ Projectile* Player::shoot() {
 	}
 }
 
-void Player::draw(float scrollX) {
+void Player::draw(float scrollX, float scrollY) {
 	/*
 	if (invencibleTime == 0) {
 		animation->draw(x - scrollX, y);
@@ -100,14 +100,13 @@ void Player::draw(float scrollX) {
 			animation->draw(x - scrollX, y);
 		}
 	}*/
-	animation->draw(x - scrollX, y);
+	animation->draw(x - scrollX, y - scrollY);
 }
 
 void Player::loseLife() {
 	if (invencibleTime <= 0) {
 		if (lifes > 0) {
 			lifes--;
-			invencibleTime = 800;
 		}
 	}
 }

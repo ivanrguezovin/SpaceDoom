@@ -68,8 +68,8 @@ void Enemy::impacted() {
 }
 
 
-void Enemy::draw(float scrollY) {
-	animation->draw(x, y - scrollY);
+void Enemy::draw(float scrollX, float scrollY) {
+	animation->draw(x - scrollX, y - scrollY);
 }
 
 ProjectileEnemy* Enemy::shoot() {

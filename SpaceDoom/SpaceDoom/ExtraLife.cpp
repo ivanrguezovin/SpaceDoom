@@ -15,8 +15,8 @@ void ExtraLife::update() {
 	animation->update();
 }
 
-void ExtraLife::draw(float scrollY) {
-	animation->draw(x, y - scrollY);
+void ExtraLife::draw(float scrollX, float scrollY) {
+	animation->draw(x - scrollX, y - scrollY);
 }
 
 int ExtraLife::boosteo(int* points, int* shots, int* lifes, Text * textPoints, Text * textShots, Text * textLifes, int size) {

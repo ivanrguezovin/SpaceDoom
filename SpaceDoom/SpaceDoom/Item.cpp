@@ -12,8 +12,8 @@ void Item::update() {
 	animation->update();
 }
 
-void Item::draw(float scrollY) {
-	animation->draw(x, y - scrollY);
+void Item::draw(float scrollX, float scrollY) {
+	animation->draw(x - scrollX, y - scrollY);
 }
 
 int Item::boosteo(int* points, int* shots, int* lifes, Text* textPoints, Text* textShots, Text* textLifes, int size) {

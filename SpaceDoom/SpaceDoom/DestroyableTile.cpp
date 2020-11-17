@@ -14,8 +14,8 @@ void DestroyableTile::update() {
 	}
 }
 
-void DestroyableTile::draw(float scrollY) {
-	Actor::draw(); // llamar al metodo del hijo
+void DestroyableTile::draw(float scrollX, float scrollY) {
+	Actor::draw(scrollX,scrollY); // llamar al metodo del hijo
 
 	if (tileAux != NULL) {
 		tileAux->draw();

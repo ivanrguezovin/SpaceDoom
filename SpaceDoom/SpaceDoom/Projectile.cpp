@@ -12,6 +12,6 @@ void Projectile::update() {
 	animation->update();
 }
 
-void Projectile::draw(float scrollY) {
-	animation->draw(x, y + scrollY);
+void Projectile::draw(float scrollX, float scrollY) {
+	animation->draw(x - scrollX, y + scrollY);
 }

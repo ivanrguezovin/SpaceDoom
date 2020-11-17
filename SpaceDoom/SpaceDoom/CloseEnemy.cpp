@@ -69,6 +69,6 @@ void CloseEnemy::impacted() {
 }
 
 
-void CloseEnemy::draw(float scrollY) {
-	animation->draw(x, y - scrollY);
+void CloseEnemy::draw(float scrollX, float scrollY) {
+	animation->draw(x - scrollX, y - scrollY);
 }

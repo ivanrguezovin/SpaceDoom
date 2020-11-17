@@ -14,8 +14,8 @@ void CommonTile::update() {
 	}
 }
 
-void CommonTile::draw(float scrollY) {
-	Actor::draw(); // llamar al metodo del hijo
+void CommonTile::draw(float scrollX, float scrollY) {
+	Actor::draw(scrollX, scrollY); // llamar al metodo del hijo
 
 	if (tileAux != NULL) {
 		tileAux->draw();

@@ -10,6 +10,6 @@ public:
 	void update();
 	Animation* aMoving;
 	Animation* animation;
-	void draw(float scrollY = 0) override;
+	void draw(float scrollX = 0, float scrollY = 0) override;
 };
 

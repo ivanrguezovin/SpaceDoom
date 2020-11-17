@@ -304,7 +304,13 @@ void GameLayer::update() {
 		tile->update();
 	}
 
-
+	if (player->collisionUp == true) {
+		message = new Actor("res/mensaje_perder.png", WIDTH * 0.5, HEIGHT * 0.5,
+			WIDTH, HEIGHT, game);
+		pause = true;
+		init();
+		return;
+	}
 	// Colisiones
 	for (auto const& enemy : enemies) {
 		if (player->isOverlap(enemy)) {
@@ -329,6 +335,9 @@ void GameLayer::update() {
 	for (auto const& tile : tiles) {
 		if (player->isOverlapTile(tile)) {
 			if (player->invencibleTime == 0) {
+				message = new Actor("res/mensaje_perder.png", WIDTH * 0.5, HEIGHT * 0.5,
+					WIDTH, HEIGHT, game);
+				pause = true;
 				init();
 				return;
 			}
@@ -647,26 +656,26 @@ void GameLayer::draw() {
 
 	background->draw();
 	for (auto const& tile : tiles) {
-		tile->draw(scrollY);
+		tile->draw(scrollX,scrollY);
 	}
 	for (auto const& item : items) {
-		item->draw(scrollY);
+		item->draw(scrollX, scrollY);
 	}
 	for (auto const& projectile : projectiles) {
-		projectile->draw(scrollY);
+		projectile->draw(scrollX, scrollY);
 	}
 	for (auto const& projectile : projectilesEnemy) {
-		projectile->draw(scrollY);
+		projectile->draw(scrollX, scrollY);
 	}
 	for (auto const& projectile : projectilesTurret) {
-		projectile->draw(scrollY);
+		projectile->draw(scrollX, scrollY);
 	}
 	for (auto const& goal : goals) {
-		goal->draw(scrollY);
+		goal->draw(scrollX, scrollY);
 	}
-	player->draw(scrollY);
+	player->draw(scrollX, scrollY);
 	for (auto const& enemy : enemies) {
-		enemy->draw(scrollY);
+		enemy->draw(scrollX, scrollY);
 	}
 
 	backgroundPoints->draw();

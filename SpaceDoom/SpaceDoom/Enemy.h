@@ -8,7 +8,7 @@ class Enemy : public Actor
 {
 public:
 	Enemy(string filename, float x, float y, Game* game);
-	virtual void draw(float scrollY = 0) override; // Va a sobrescribir
+	virtual void draw(float scrollX = 0, float scrollY = 0) override; // Va a sobrescribir
 	virtual void update();
 	virtual void impacted(); // Recibe impacto y pone animación de morir
 	float vyIntelligence;

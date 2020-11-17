@@ -17,8 +17,8 @@ void Turret::update() {
 	}
 }
 
-void Turret::draw(float scrollY) {
-	Actor::draw(); // llamar al metodo del hijo
+void Turret::draw(float scrollX, float scrollY) {
+	Actor::draw(scrollX,scrollY); // llamar al metodo del hijo
 
 	if (tileAux != NULL) {
 		tileAux->draw();

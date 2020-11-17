@@ -15,8 +15,8 @@ void Nuclear::update() {
 	animation->update();
 }
 
-void Nuclear::draw(float scrollY) {
-	animation->draw(x, y - scrollY);
+void Nuclear::draw(float scrollX, float scrollY) {
+	animation->draw(x - scrollX, y - scrollY);
 }
 
 int Nuclear::boosteo(int* points, int* shots, int* lifes, Text * textPoints, Text * textShots, Text * textLifes, int size) {

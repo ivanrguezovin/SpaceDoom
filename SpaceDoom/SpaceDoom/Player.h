@@ -12,7 +12,7 @@ public:
 	Projectile* shoot();
 	void update();
 	void moveX(float axis);
-	void draw(float scrollY = 0) override; // Va a sobrescribir
+	void draw(float scrollX = 0, float scrollY = 0) override; // Va a sobrescribir
 	void loseLife();
 	int lifes = 3;
 	int orientation;
