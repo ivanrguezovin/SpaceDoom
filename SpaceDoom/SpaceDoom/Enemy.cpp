@@ -15,10 +15,6 @@ Enemy::Enemy(string filename, float x, float y, Game* game)
 		512, 128, 1, 4, false, game);
 	animation = aMoving;
 
-	vy = 0;
-	vyIntelligence = 1;
-	vy = vyIntelligence;
-
 }
 
 void Enemy::update() {
@@ -47,18 +43,6 @@ void Enemy::update() {
 		animation = aHiting;
 	}
 
-	// Establecer velocidad
-	if (state != game->stateDying) {
-		// no está muerto y se ha quedado parado
-		if (vy == 0) {
-			vyIntelligence = vyIntelligence * 1;
-			vy = vyIntelligence;
-		}
-
-	}
-	else {
-		vy = 0;
-	}
 }
 
 void Enemy::impacted() {

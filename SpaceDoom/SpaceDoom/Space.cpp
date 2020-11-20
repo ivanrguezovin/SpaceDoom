@@ -34,13 +34,14 @@ void Space::updateMoveRight(Actor* dynamicAct) {
         // El mejor "idealmente" vx partimos de ese
 
         for (auto const& staticAct : staticActors) {
-            int rightDynamic = dynamicAct->x + dynamicAct->width / 2;
-            int topDynamic = dynamicAct->y - dynamicAct->height / 2;
-            int downDynamic = dynamicAct->y + dynamicAct->height / 2;
+            int rightDynamic = dynamicAct->x + dynamicAct->collisionWidth / 2;
+            int topDynamic = dynamicAct->y - dynamicAct->collisionHeight / 2;
+            int downDynamic = dynamicAct->y + dynamicAct->collisionHeight / 2;
 
-            int leftStatic = staticAct->x - staticAct->width / 2;
-            int topStatic = staticAct->y - staticAct->height / 2;
-            int downStatic = staticAct->y + staticAct->height / 2;
+            int leftStatic = staticAct->x - staticAct->collisionWidth / 2;
+            int topStatic = staticAct->y - staticAct->collisionHeight / 2;
+            int downStatic = staticAct->y + staticAct->collisionHeight / 2;
+
 
             // Alerta!, Elemento estático en la trayectoria.
             if ((rightDynamic + dynamicAct->vx) >= leftStatic
@@ -71,13 +72,13 @@ void Space::updateMoveLeft(Actor* dynamicAct) {
         // El mejor "idealmente" vx partimos de ese
 
         for (auto const& staticAct : staticActors) {
-            int leftDynamic = dynamicAct->x - dynamicAct->width / 2;
-            int topDynamic = dynamicAct->y - dynamicAct->height / 2;
-            int downDynamic = dynamicAct->y + dynamicAct->height / 2;
+            int leftDynamic = dynamicAct->x - dynamicAct->collisionWidth / 2;
+            int topDynamic = dynamicAct->y - dynamicAct->collisionHeight / 2;
+            int downDynamic = dynamicAct->y + dynamicAct->collisionHeight / 2;
 
-            int rightStatic = staticAct->x + staticAct->width / 2;
-            int topStatic = staticAct->y - staticAct->height / 2;
-            int downStatic = staticAct->y + staticAct->height / 2;
+            int rightStatic = staticAct->x + staticAct->collisionWidth / 2;
+            int topStatic = staticAct->y - staticAct->collisionHeight / 2;
+            int downStatic = staticAct->y + staticAct->collisionHeight / 2;
 
             // Alerta!, Elemento estático en la trayectoria.
             if ((leftDynamic + dynamicAct->vx) <= rightStatic
@@ -110,15 +111,15 @@ void Space::updateMoveTop(Actor* dynamicAct) {
         // El mejor "idealmente" vy partimos de ese
 
         for (auto const& staticAct : staticActors) {
-            int topDynamic = dynamicAct->y - dynamicAct->height / 2;
-            int downDynamic = dynamicAct->y + dynamicAct->height / 2;
-            int rightDynamic = dynamicAct->x + dynamicAct->width / 2;
-            int leftDynamic = dynamicAct->x - dynamicAct->width / 2;
+            int topDynamic = dynamicAct->y - dynamicAct->collisionHeight / 2;
+            int downDynamic = dynamicAct->y + dynamicAct->collisionHeight / 2;
+            int rightDynamic = dynamicAct->x + dynamicAct->collisionWidth / 2;
+            int leftDynamic = dynamicAct->x - dynamicAct->collisionWidth / 2;
 
-            int topStatic = staticAct->y - staticAct->height / 2;
-            int downStatic = staticAct->y + staticAct->height / 2;
-            int rightStatic = staticAct->x + staticAct->width / 2;
-            int leftStatic = staticAct->x - staticAct->width / 2;
+            int topStatic = staticAct->y - staticAct->collisionHeight / 2;
+            int downStatic = staticAct->y + staticAct->collisionHeight / 2;
+            int rightStatic = staticAct->x + staticAct->collisionWidth / 2;
+            int leftStatic = staticAct->x - staticAct->collisionWidth / 2;
 
             // Alerta!, Elemento estático en la trayectoria.
             if ((topDynamic + dynamicAct->vy) <= downStatic
@@ -158,15 +159,15 @@ void Space::updateMoveDown(Actor* dynamicAct) {
         // El mejor "idealmente" vy partimos de ese
 
         for (auto const& staticAct : staticActors) {
-            int topDynamic = dynamicAct->y - dynamicAct->height / 2;
-            int downDynamic = dynamicAct->y + dynamicAct->height / 2;
-            int rightDynamic = dynamicAct->x + dynamicAct->width / 2;
-            int leftDynamic = dynamicAct->x - dynamicAct->width / 2;
+            int topDynamic = dynamicAct->y - dynamicAct->collisionHeight / 2;
+            int downDynamic = dynamicAct->y + dynamicAct->collisionHeight / 2;
+            int rightDynamic = dynamicAct->x + dynamicAct->collisionWidth / 2;
+            int leftDynamic = dynamicAct->x - dynamicAct->collisionWidth / 2;
 
-            int topStatic = staticAct->y - staticAct->height / 2;
-            int downStatic = staticAct->y + staticAct->height / 2;
-            int rightStatic = staticAct->x + staticAct->width / 2;
-            int leftStatic = staticAct->x - staticAct->width / 2;
+            int topStatic = staticAct->y - staticAct->collisionHeight / 2;
+            int downStatic = staticAct->y + staticAct->collisionHeight / 2;
+            int rightStatic = staticAct->x + staticAct->collisionWidth / 2;
+            int leftStatic = staticAct->x - staticAct->collisionWidth / 2;
 
             // Alerta!, Elemento estático en la trayectoria.
             if ((downDynamic + dynamicAct->vy) >= topStatic

@@ -1,9 +1,8 @@
 #include "Item.h"
 
-Item::Item(string filename, float x, float y, float width, float height, float vy, Game* game)
+Item::Item(string filename, float x, float y, float width, float height, Game* game)
 	: Actor(filename, x, y, width, height, game) {
 
-	this->vy = vy;
 	aMoving = new Animation(filename, width, height, 108, 40, 6, 1, true, game);
 	animation = aMoving;
 }

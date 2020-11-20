@@ -5,8 +5,7 @@
 class Turret : public Tile
 {
 public:
-	Turret(string filename, float x, float y, float vy, float width, float height, Game* game);
-	void draw(float scrollX = 0, float scrollY = 0) override; // Va a sobrescribir
+	Turret(string filename, float x, float y, float width, float height, Game* game);
 	void update() override;
 	ProjectileTurret* shoot() override;
 	bool isTurret() override;

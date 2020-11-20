@@ -4,9 +4,7 @@
 class DestroyableTile : public Tile
 {
 public:
-	DestroyableTile(string filename, float x, float y, float vy, float width, float height, Game* game);
-	void draw(float scrollX = 0, float scrollY = 0) override; // Va a sobrescribir
-	void update() override;
+	DestroyableTile(string filename, float x, float y, float width, float height, Game* game);
 	bool destroyByProjectile() override;
 };
 

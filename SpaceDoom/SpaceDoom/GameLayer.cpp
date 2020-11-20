@@ -64,16 +64,17 @@ void GameLayer::loadMap(string name) {
 		for (int i = 0; getline(streamFile, line); i++) {
 			istringstream streamLine(line);
 			mapWidth = line.length() * 40; // Ancho del mapa en pixels
+			mapHeight = (i + 1) * 40; // Altura del mapa en pixels
 			// Por carácter (en cada línea)
 			for (int j = 0; !streamLine.eof(); j++) {
 				streamLine >> character; // Leer character 
-				cout << character;
+				//cout << character;
 				float x = 40 / 2 + j * 40; // x central
 				float y = 32 + i * 32; // y suelo
 				loadMapObject(character, x, y);
 			}
 
-			cout << character << endl;
+			//cout << character << endl;
 		}
 	}
 	streamFile.close();
@@ -83,10 +84,10 @@ void GameLayer::loadMapObject(char character, float x, float y)
 {
 	switch (character) {
 	case 'C': {
-		CommonTile* cup = new CommonTile("res/meta.png", x, y, 1, 40, 40, game);
+		Tile* cup = new Tile("res/meta.png", x, y, 40, 40, game);
 		cup->y = cup->y - cup->height / 2;
 		goals.push_back(cup);
-		space->addStaticActor(cup);
+		space->addDynamicActor(cup);
 		break;
 	}
 	case 'E': {
@@ -112,57 +113,57 @@ void GameLayer::loadMapObject(char character, float x, float y)
 		break;
 	}
 	case '#': {
-		CommonTile* tile = new CommonTile("res/tile.png", x, y, 1, 40, 40, game);
+		CommonTile* tile = new CommonTile("res/tile.png", x, y, 40, 40, game);
 		tile->y = tile->y - tile->height / 2;
 		tiles.push_back(tile);
 		space->addStaticActor(tile);
 		break;
 	}
 	case 'D': {
-		DestroyableTile* tile = new DestroyableTile("res/destroyTile.png", x, y, 1, 40, 40, game);
+		DestroyableTile* tile = new DestroyableTile("res/destroyTile.png", x, y, 40, 40, game);
 		tile->y = tile->y - tile->height / 2;
 		tiles.push_back(tile);
 		space->addStaticActor(tile);
 		break;
 	}
 	case 'T': {
-		Turret* tile = new Turret("res/turret.png", x, y, 1, 85, 85, game);
+		Turret* tile = new Turret("res/turret.png", x, y, 85, 85, game);
 		tile->y = tile->y - tile->height / 2;
 		tiles.push_back(tile);
 		space->addStaticActor(tile);
 		break;
 	}
 	case 'A': {
-		ExtraAmmo* item = new ExtraAmmo("res/extraAmmo.png", x, y, 40, 40, 1, game);
+		ExtraAmmo* item = new ExtraAmmo("res/extraAmmo.png", x, y, 40, 40, game);
 		item->y = item->y - item->height / 2;
 		items.push_back(item);
-		space->addStaticActor(item);
+		space->addDynamicActor(item);
 		break;
 	}
 	case 'L': {
-		ExtraLife* item = new ExtraLife("res/corazon.png", x, y, 44, 36, 1, game);
+		ExtraLife* item = new ExtraLife("res/corazon.png", x, y, 44, 36, game);
 		item->y = item->y - item->height / 2;
 		items.push_back(item);
-		space->addStaticActor(item);
+		space->addDynamicActor(item);
 		break;
 	}
 	case 'N': {
-		Nuclear* item = new Nuclear("res/bomb.png", x, y, 40, 42, 1, game);
+		Nuclear* item = new Nuclear("res/bomb.png", x, y, 40, 42, game);
 		item->y = item->y - item->height / 2;
 		items.push_back(item);
-		space->addStaticActor(item);
+		space->addDynamicActor(item);
 		break;
 	}case 'I': {
-		Invencible* item = new Invencible("res/icono_puntos.png", x, y, 40, 40, 1, game);
+		Invencible* item = new Invencible("res/icono_puntos.png", x, y, 40, 40, game);
 		item->y = item->y - item->height / 2;
 		items.push_back(item);
-		space->addStaticActor(item);
+		space->addDynamicActor(item);
 		break;
 	}case 'M': {
-		Coin* item = new Coin("res/moneda.png", x, y, 40, 40, 1, game);
+		Coin* item = new Coin("res/moneda.png", x, y, 40, 40, game);
 		item->y = item->y - item->height / 2;
 		items.push_back(item);
-		space->addStaticActor(item);
+		space->addDynamicActor(item);
 		break;
 	}
 	}
@@ -287,6 +288,7 @@ void GameLayer::update() {
 		}
 	}
 	for (auto const& projectile : projectiles) {
+		cout << "x: " << player->x << "; y: " << player->y << "; xp: " << projectile->x << "; yp: " << projectile->y << endl;
 		projectile->update();
 	}
 	for (auto const& item : items) {
@@ -311,9 +313,10 @@ void GameLayer::update() {
 		init();
 		return;
 	}
+
 	// Colisiones
 	for (auto const& enemy : enemies) {
-		if (player->isOverlap(enemy)) {
+		if (player->isOverlap(enemy) && player->hit <=0) {
 			if (player->invencibleTime > 0) {
 				enemy->impacted();
 			}
@@ -332,38 +335,12 @@ void GameLayer::update() {
 		}
 	}
 
-	for (auto const& tile : tiles) {
-		if (player->isOverlapTile(tile)) {
-			if (player->invencibleTime == 0) {
-				message = new Actor("res/mensaje_perder.png", WIDTH * 0.5, HEIGHT * 0.5,
-					WIDTH, HEIGHT, game);
-				pause = true;
-				init();
-				return;
-			}
-		}
-	}
-
 	list<Enemy*> deleteEnemies;
 	list<Tile*> deleteTiles;
 	list<Projectile*> deleteProjectiles;
 	list<Item*> deleteItems;
 	list<ProjectileEnemy*> deleteProjectilesEnemy;
 	list<ProjectileTurret*> deleteProjectilesTurret;
-
-	for (auto const& item : items) {
-		for (auto const& goal : goals) {
-			if (item->isOverlapTile(goal)) {
-				bool pInList = std::find(deleteItems.begin(),
-					deleteItems.end(),
-					item) != deleteItems.end();
-
-				if (!pInList) {
-					deleteItems.push_back(item);
-				}
-			}
-		}
-	}
 
 	for (auto const& item : items) {
 		if (player->isOverlap(item)) {
@@ -380,26 +357,20 @@ void GameLayer::update() {
 			int pUp = 5;
 			int numEnemigos = 0;
 			for (auto const& enemy : enemies) {
-				if (enemy->isInRender()) {
-					numEnemigos += 1;
-				}
+				numEnemigos += 1;
 			}
 			for (auto const& tile : tiles) {
-				if (tile->isInRender() && (tile->destroyByProjectile() || tile->isTurret())) {
-					numEnemigos += 1;
-				}
+				numEnemigos += 1;
 			}
 			pUp = item->boosteo(p, s, l, textPoints, textBullets, textLifes, numEnemigos);
 			if (pUp == 3) { //Nuclear
 				audioBoost = new Audio("res/efecto_explosion.wav", false);
 				audioBoost->play();
 				for (auto const& enemy : enemies) {
-					if (enemy->isInRender(scrollY)) {
-						deleteEnemies.push_back(enemy);
-					}
+					deleteEnemies.push_back(enemy);
 				}
 				for (auto const& tile : tiles) {
-					if (tile->isInRender(scrollY) && (tile->destroyByProjectile() || tile->isTurret())) {
+					if ((tile->destroyByProjectile() || tile->isTurret())) {
 						deleteTiles.push_back(tile);
 					}
 				}
@@ -417,7 +388,7 @@ void GameLayer::update() {
 				audioBoost->play();
 			}
 			else if (pUp == 4) { //Invencibilidad
-				player->invencibleTime = 800;
+				player->invencibleTime = 250;
 				audioBoost = new Audio("res/ammo.wav", false);
 				audioBoost->play();
 			}
@@ -425,7 +396,7 @@ void GameLayer::update() {
 	}
 
 	for (auto const& projectile : projectiles) {
-		if (projectile->isInRender(scrollY) == false || projectile->vy == 0) {
+		if (projectile->vy == 0) {
 			bool pInList = std::find(deleteProjectiles.begin(),
 				deleteProjectiles.end(),
 				projectile) != deleteProjectiles.end();
@@ -447,7 +418,7 @@ void GameLayer::update() {
 		}
 	}
 	for (auto const& projectile : projectilesEnemy) {
-		if (projectile->isInRender(scrollY) == false || projectile->vy == 0) {
+		if (projectile->vy == 0) {
 
 			bool pInList = std::find(deleteProjectilesEnemy.begin(),
 				deleteProjectilesEnemy.end(),
@@ -459,7 +430,7 @@ void GameLayer::update() {
 		}
 	}
 	for (auto const& projectile : projectilesTurret) {
-		if (projectile->isInRender(scrollY) == false || projectile->vy == 0) {
+		if (projectile->vy == 0) {
 
 			bool pInList = std::find(deleteProjectilesTurret.begin(),
 				deleteProjectilesTurret.end(),
@@ -523,18 +494,6 @@ void GameLayer::update() {
 				}
 			}
 		}
-		/*
-		for (auto const& projectile : projectilesTurret) {
-			if (tile->isOverlap(projectile)) {
-				bool pInList = std::find(deleteProjectilesTurret.begin(),
-					deleteProjectilesTurret.end(),
-					projectile) != deleteProjectilesTurret.end();
-
-				if (!pInList) {
-					deleteProjectilesTurret.push_back(projectile);
-				}
-			}
-		}*/
 	}
 
 	for (auto const& projectile : projectilesEnemy) {
@@ -605,7 +564,7 @@ void GameLayer::update() {
 
 	for (auto const& delTile : deleteTiles) {
 		tiles.remove(delTile);
-		space->removeDynamicActor(delTile);
+		space->removeStaticActor(delTile);
 	}
 	deleteTiles.clear();
 
@@ -635,17 +594,18 @@ void GameLayer::update() {
 }
 
 void GameLayer::calculateScroll() {
-	// limite izquierda
-	if (player->x > WIDTH * 0.3) {
-		if (player->x - scrollX < WIDTH * 0.3) {
-			scrollX = player->x - WIDTH * 0.3;
+
+	// limite arriba
+	if (player->y > HEIGHT * 0.87) { //0.87
+		if (player->y - scrollY < HEIGHT * 0.87) {
+			scrollY = player->y - HEIGHT * 0.87;
 		}
 	}
 
-	// limite derecha
-	if (player->x < mapWidth - WIDTH * 0.3) {
-		if (player->x - scrollX > WIDTH * 0.7) {
-			scrollX = player->x - WIDTH * 0.7;
+	// limite abajo
+	if (player->y < mapHeight - HEIGHT * 0.13) {
+		if (player->y - scrollY > HEIGHT * 0.87) {
+			scrollY = player->y - HEIGHT * 0.87;
 		}
 	}
 }
@@ -707,11 +667,9 @@ void GameLayer::gamePadToControls(SDL_Event event) {
 	// Leer los botones
 	bool buttonA = SDL_GameControllerGetButton(gamePad, SDL_CONTROLLER_BUTTON_A);
 	bool buttonStart = SDL_GameControllerGetButton(gamePad, SDL_CONTROLLER_BUTTON_START);
-	// SDL_CONTROLLER_BUTTON_A, SDL_CONTROLLER_BUTTON_B
-	// SDL_CONTROLLER_BUTTON_X, SDL_CONTROLLER_BUTTON_Y
-	cout << "botón:" << buttonA << ", " << buttonStart << endl;
+	//cout << "botón:" << buttonA << ", " << buttonStart << endl;
 	int stickX = SDL_GameControllerGetAxis(gamePad, SDL_CONTROLLER_AXIS_LEFTX);
-	cout << "stickX" << stickX << endl;
+	//cout << "stickX" << stickX << endl;
 
 	// Retorna aproximadamente entre [-32800, 32800], el centro debería estar en 0
 	// Si el mando tiene "holgura" el centro varia [-4000 , 4000]

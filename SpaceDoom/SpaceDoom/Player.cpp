@@ -15,13 +15,19 @@ Player::Player(float x, float y, Game* game)
 		2400, 160, 0.5, 15, true, game);
 
 	animation = aIdle;
-
+	this->collisionWidth = width - 60;
+	this->collisionHeight = height - 60;
+	vy = -2;
 }
 
 
 void Player::update() {
 	if (invencibleTime > 0) {
 		invencibleTime--;
+	}
+
+	if (hit > 0) {
+		hit--;
 	}
 
 	bool endAnimation = animation->update();
@@ -93,13 +99,13 @@ Projectile* Player::shoot() {
 void Player::draw(float scrollX, float scrollY) {
 	/*
 	if (invencibleTime == 0) {
-		animation->draw(x - scrollX, y);
+		animation->draw(x - scrollX, y - scrollY);
 	}
 	else {
 		if (invencibleTime % 10 >= 0 && invencibleTime % 10 <= 5) {
-			animation->draw(x - scrollX, y);
+			animation->draw(x - scrollX, y - scrollY);
 		}
-	}*/
+	*/
 	animation->draw(x - scrollX, y - scrollY);
 }
 
@@ -107,6 +113,7 @@ void Player::loseLife() {
 	if (invencibleTime <= 0) {
 		if (lifes > 0) {
 			lifes--;
+			hit = 150;
 		}
 	}
 }

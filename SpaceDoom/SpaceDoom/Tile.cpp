@@ -2,27 +2,12 @@
 
 Tile::Tile(string filename, float x, float y, float width, float height, Game* game)
 	: Actor(filename, x, y, width, height, game) {
-}
 
-Tile::Tile(string filename, float x, float y, float vy, float width, float height, Game* game)
-	: Actor(filename, x, y, width, height, game) {
-	this->vy = vy;
-	if (vy != 0) {
-		tileAux = new Tile(filename, x, y + HEIGHT, width, height, game);
-	}
 }
 
 void Tile::update() {
-	if (vy != 0) {
-		y = y + vy;
-	}
-}
-
-void Tile::draw(float scrollX, float scrollY) {
-	Actor::draw(scrollX,scrollY); // llamar al metodo del hijo
-
-	if (tileAux != NULL) {
-		tileAux->draw();
+	if (shootTime > 0) {
+		shootTime=shootTime;
 	}
 }
 

@@ -1,17 +1,13 @@
 #include "ExtraLife.h"
 
-ExtraLife::ExtraLife(string filename, float x, float y, float width, float height, float vy, Game* game)
-	: Item(filename, x, y, width, height, vy, game) {
+ExtraLife::ExtraLife(string filename, float x, float y, float width, float height, Game* game)
+	: Item(filename, x, y, width, height, game) {
 
-	this->vy = vy;
 	aMoving = new Animation(filename, width, height, 44, 36, 1, 1, true, game);
 	animation = aMoving;
 }
 
 void ExtraLife::update() {
-	if (vy != 0) {
-		y = y + vy;
-	}
 	animation->update();
 }
 

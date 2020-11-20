@@ -16,6 +16,8 @@ Actor::Actor(string filename, float x, float y, int width, int height, Game* gam
 	// lo que va a medir en el juego
 	this->width = width;
 	this->height = height;
+	this->collisionWidth = width;
+	this->collisionHeight = height;
 }
 
 void Actor::draw(float scrollX, float scrollY) {
@@ -40,50 +42,17 @@ void Actor::draw(float scrollX, float scrollY) {
 
 bool Actor::isOverlap(Actor* actor) {
 	bool overlap = false;
-	if (actor->x - actor->width / 2 <= x + width / 2
-		&& actor->x + actor->width / 2 >= x - width / 2
-		&& actor->y + actor->height / 2 >= y - height / 2
-		&& actor->y - actor->height / 2 <= y + height / 2) {
+	if (actor->x - actor->collisionWidth / 2 <= x + collisionWidth / 2
+		&& actor->x + actor->collisionWidth / 2 >= x - collisionWidth / 2
+		&& actor->y + actor->collisionHeight / 2 >= y - collisionHeight / 2
+		&& actor->y - actor->collisionHeight / 2 <= y + collisionHeight / 2) {
 
 		overlap = true;
 	}
 	return overlap;
 }
-
-bool Actor::isOverlapTile(Actor* tile) {
-	bool overlap = false;
-	int possibleMovement = tile->vy;
-
-	int topDynamic = y - height / 8;
-	int downDynamic = y + height / 8;
-	int rightDynamic = x + width / 8;
-	int leftDynamic = x - width / 8;
-
-	int topStatic = tile->y - tile->height;
-	int downStatic = tile->y + tile->height;
-	int rightStatic = tile->x + tile->width / 2;
-	int leftStatic = tile->x - tile->width / 2;
-
-	if ((topDynamic + vy) <= downStatic
-		&& downDynamic > topStatic
-		&& leftDynamic < rightStatic
-		&& rightDynamic > leftStatic) {
-
-		// Comprobamos si la distancia al estático es menor
-		// que nuestro movimientoPosible actual
-		if (possibleMovement <= downStatic - topDynamic) {
-			// La distancia es MENOR que nuestro movimiento posible
-			// Tenemos que actualizar el movimiento posible a uno menor
-			possibleMovement = downStatic - topDynamic;
-			overlap = true;
-		}
-	}
-
-	return overlap;
-}
-
 bool Actor::isInRender(float scrollX, float scrollY) {
-	if (x - scrollX - width / 2 <= WIDTH && x - scrollX + width / 2 >= 0 &&
+	if ((x - scrollX) - width / 2 <= WIDTH && (x - scrollX) + width / 2 >= 0 &&
 		(y - scrollY) - height / 2 <= HEIGHT && (y - scrollY) + height / 2 >= 0) {
 		return true;
 	}

@@ -21,12 +21,14 @@ public:
 	SDL_Texture* texture;
 	int x;
 	int y;
-	float vx;
-	float vy;
+	float vx = 0;
+	float vy = 0;
 	int width;
 	int height;
 	int fileWidth;
 	int fileHeight;
 	Game* game; // referencia al juego
+	int collisionWidth;
+	int collisionHeight;
 };
 

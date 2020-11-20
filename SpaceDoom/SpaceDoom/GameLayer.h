@@ -59,6 +59,7 @@ public:
 	float scrollY;
 	float scrollX;
 	int mapWidth;
+	int mapHeight;
 	list<Tile*> tiles;
 	list<Tile*> goals;
 	list<Item*> items;

@@ -11,10 +11,6 @@ ShooterEnemy::ShooterEnemy(string filename, float x, float y, Game* game)
 	aMoving = new Animation("res/closeEnemy_move.png", width, height,
 		768, 128, 1, 6, true, game);
 
-	vy = 0;
-	vyIntelligence = 1;
-	vy = vyIntelligence;
-
 }
 
 void ShooterEnemy::update() {
@@ -40,18 +36,6 @@ void ShooterEnemy::update() {
 		animation = aDying;
 	}
 
-	// Establecer velocidad
-	if (state != game->stateDying) {
-		// no está muerto y se ha quedado parado
-		if (vy == 0) {
-			vyIntelligence = vyIntelligence * 1;
-			vy = vyIntelligence;
-		}
-
-	}
-	else {
-		vy = 0;
-	}
 }
 
 void ShooterEnemy::impacted() {

@@ -1,17 +1,13 @@
 #include "Nuclear.h"
 
-Nuclear::Nuclear(string filename, float x, float y, float width, float height, float vy, Game* game)
-	: Item(filename, x, y, width, height, vy, game) {
+Nuclear::Nuclear(string filename, float x, float y, float width, float height, Game* game)
+	: Item(filename, x, y, width, height, game) {
 
-	this->vy = vy;
 	aMoving = new Animation(filename, width, height, 40, 42, 1, 1, true, game);
 	animation = aMoving;
 }
 
 void Nuclear::update() {
-	if (vy != 0) {
-		y = y + vy;
-	}
 	animation->update();
 }
 
