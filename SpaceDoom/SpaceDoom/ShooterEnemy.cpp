@@ -8,8 +8,8 @@ ShooterEnemy::ShooterEnemy(string filename, float x, float y, Game* game)
 	aDying = new Animation("res/closeEnemy_die.png", width, height,
 		835, 65, 1, 13, false, game);
 
-	aMoving = new Animation("res/closeEnemy_move.png", width, height,
-		768, 128, 1, 6, true, game);
+	aMoving = new Animation("res/slime1_front.png", width, height,
+		64, 16, 1, 4, true, game);
 
 }
 
