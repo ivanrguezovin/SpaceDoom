@@ -34,10 +34,10 @@ void GameLayer::init() {
 
 
 	background = new Background("res/fondo_2.png", WIDTH * 0.5, HEIGHT * 0.5, -1, game);
-	backgroundPoints = new Actor("res/icono_puntos.png",
-		WIDTH * 0.85, HEIGHT * 0.04, 24, 24, game);
+	backgroundPoints = new Actor("res/icono_recolectable.png",
+		WIDTH * 0.85, HEIGHT * 0.04, 23, 23, game);
 	backgroundBullets = new Actor("res/bullet.png",
-		WIDTH * 0.73, HEIGHT * 0.04, 61, 64, game);
+		WIDTH * 0.73, HEIGHT * 0.04, 23, 23, game);
 	backgroundLifes = new Actor("res/corazon.png",
 		WIDTH * 0.08, HEIGHT * 0.95, 44, 36, game);
 
