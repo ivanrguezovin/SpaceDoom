@@ -26,7 +26,7 @@ void GameLayer::init() {
 	audioBackground = new Audio("res/musica_ambiente.mp3", true);
 	audioBackground->play();
 
-	points = 0;
+	pointsPreLevel = points;
 	textPoints = new Text("Puntos", WIDTH * 0.92, HEIGHT * 0.04, game);
 	textPoints->content = to_string(points);
 	textLifes = new Text("Vidas", WIDTH * 0.15, HEIGHT * 0.94, game);
@@ -49,6 +49,7 @@ void GameLayer::init() {
 	items.clear();
 
 	loadMap("res/" + to_string(game->currentLevel) + ".txt");
+
 	if (game->currentLevel == 0) {
 		player->vy = -2;
 	}
@@ -322,6 +323,7 @@ void GameLayer::update() {
 		message = new Actor("res/mensaje_perder.png", WIDTH * 0.5, HEIGHT * 0.5,
 			WIDTH, HEIGHT, game);
 		pause = true;
+		points = pointsPreLevel;
 		init();
 		return;
 	}
@@ -341,6 +343,7 @@ void GameLayer::update() {
 						message = new Actor("res/mensaje_perder.png", WIDTH * 0.5, HEIGHT * 0.5,
 							WIDTH, HEIGHT, game);
 						pause = true;
+						points = pointsPreLevel;
 						init();
 						return;
 					}
@@ -523,6 +526,10 @@ void GameLayer::update() {
 			player->loseLife();
 			textLifes->content = to_string(player->lifes);
 			if (player->lifes <= 0) {
+				message = new Actor("res/mensaje_perder.png", WIDTH * 0.5, HEIGHT * 0.5,
+					WIDTH, HEIGHT, game);
+				pause = true;
+				points = pointsPreLevel;
 				init();
 				return;
 			}
@@ -543,6 +550,10 @@ void GameLayer::update() {
 			player->loseLife();
 			textLifes->content = to_string(player->lifes);
 			if (player->lifes <= 0) {
+				message = new Actor("res/mensaje_perder.png", WIDTH * 0.5, HEIGHT * 0.5,
+					WIDTH, HEIGHT, game);
+				pause = true;
+				points = pointsPreLevel;
 				init();
 				return;
 			}

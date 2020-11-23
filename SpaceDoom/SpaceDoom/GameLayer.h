@@ -68,7 +68,7 @@ public:
 	Text* textPoints;
 	Text* textBullets;
 	Text* textLifes;
-	int points;
+	int points = 0;
 	Player* player;
 	Background* background;
 	Actor* backgroundPoints;
@@ -83,5 +83,7 @@ public:
 	bool controlShoot = false;
 	int controlMoveY = 0;
 	int controlMoveX = 0;
+
+	int pointsPreLevel = points;
 };
 
