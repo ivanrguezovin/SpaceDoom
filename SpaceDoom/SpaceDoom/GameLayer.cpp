@@ -49,6 +49,18 @@ void GameLayer::init() {
 	items.clear();
 
 	loadMap("res/" + to_string(game->currentLevel) + ".txt");
+	if (game->currentLevel == 0) {
+		player->vy = -2;
+	}
+	else if (game->currentLevel == 1) {
+		player->vy = -3;
+	}
+	else if (game->currentLevel == 2) {
+		player->vy = -4;
+	}
+	else if (game->currentLevel == 3) {
+		player->vy = -5;
+	}
 }
 
 void GameLayer::loadMap(string name) {
