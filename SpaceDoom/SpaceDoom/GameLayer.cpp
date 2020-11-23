@@ -333,15 +333,17 @@ void GameLayer::update() {
 				enemy->impacted();
 			}
 			else {
-				enemy->state = game->stateHiting;
-				player->loseLife();
-				textLifes->content = to_string(player->lifes);
-				if (player->lifes <= 0) {
-					message = new Actor("res/mensaje_perder.png", WIDTH * 0.5, HEIGHT * 0.5,
-						WIDTH, HEIGHT, game);
-					pause = true;
-					init();
-					return;
+				if (enemy->state != game->stateDying) {
+					enemy->state = game->stateHiting;
+					player->loseLife();
+					textLifes->content = to_string(player->lifes);
+					if (player->lifes <= 0) {
+						message = new Actor("res/mensaje_perder.png", WIDTH * 0.5, HEIGHT * 0.5,
+							WIDTH, HEIGHT, game);
+						pause = true;
+						init();
+						return;
+					}
 				}
 			}
 		}
