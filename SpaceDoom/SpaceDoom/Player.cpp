@@ -25,8 +25,8 @@ Player::Player(float x, float y, Game* game)
 		2400, 160, 0.5, 15, true, game);
 
 	animation = aIdle;
-	this->collisionWidth = width - 60;
-	this->collisionHeight = height - 60;
+	this->collisionWidth = width - 80;
+	this->collisionHeight = height - 80;
 	vy = -2;
 }
 

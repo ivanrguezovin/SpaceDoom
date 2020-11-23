@@ -69,6 +69,7 @@ public:
 	Audio* audioBoost;
 	Audio* audioBackground;
 	Text* textPoints;
+	Text* textFinalPoints;
 	Text* textBullets;
 	Text* textLifes;
 	int points = 0;

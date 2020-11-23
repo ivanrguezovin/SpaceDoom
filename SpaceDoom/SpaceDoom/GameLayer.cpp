@@ -27,11 +27,12 @@ void GameLayer::init() {
 	//audioBackground->play();
 
 	pointsPreLevel = points;
+	
 	textPoints = new Text("Puntos", WIDTH * 0.92, HEIGHT * 0.04, game);
 	textPoints->content = to_string(points);
 	textLifes = new Text("Vidas", WIDTH * 0.15, HEIGHT * 0.94, game);
 	textBullets = new Text("Balas", WIDTH * 0.79, HEIGHT * 0.04, game);
-
+	textFinalPoints = new Text(" ", WIDTH * 0.5, HEIGHT * 0.94, game);
 
 	background = new Background("res/fondo_2.png", WIDTH * 0.5, HEIGHT * 0.5, -1, game);
 	backgroundPoints = new Actor("res/icono_recolectable.png",
@@ -278,10 +279,16 @@ void GameLayer::update() {
 		if (goal->isOverlap(player)) {
 			game->currentLevel++;
 			if (game->currentLevel > game->finalLevel) {
+				string pf = to_string(points + player->bullets + player->lifes);
 				game->currentLevel = 0;
+				points = 0;
+				message = new Actor("res/mensaje_juego_completado.png", WIDTH * 0.5, HEIGHT * 0.5, 480, 320, game);
+				//textFinalPoints = new Text("Puntos: " + pf, WIDTH * 0.5, HEIGHT * 0.94, game); textFinalPoints->draw();
+				pause = true;
+				init();
+				break;
 			}
-			message = new Actor("res/mensaje_ganar.png", WIDTH * 0.5, HEIGHT * 0.5,
-				WIDTH, HEIGHT, game);
+			message = new Actor("res/mensaje_ganar.png", WIDTH * 0.5, HEIGHT * 0.5, WIDTH, HEIGHT, game);
 			pause = true;
 			init();
 			break;
@@ -686,6 +693,8 @@ void GameLayer::draw() {
 
 	backgroundLifes->draw();
 	textLifes->draw();
+
+	textFinalPoints->draw();
 
 	buttonPause->draw();
 
