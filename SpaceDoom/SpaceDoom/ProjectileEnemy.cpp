@@ -1,10 +1,10 @@
 #include "ProjectileEnemy.h"
 
 ProjectileEnemy::ProjectileEnemy(float x, float y, Game* game) :
-	Actor("res/bullet.png", x, y, 61, 64, game) {
+	Actor("res/asteroide.png", x, y, 40, 41, game) {
 	this->vy = 5;
-	aMoving = new Animation("res/bullet.png", width, height,
-		61, 64, 1, 1, true, game);
+	aMoving = new Animation("res/asteroide.png", width, height,
+		40, 41, 1, 1, true, game);
 	animation = aMoving;
 }
 void ProjectileEnemy::update() {
