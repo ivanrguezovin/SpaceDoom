@@ -11,5 +11,6 @@ public:
 	Animation* aMoving;
 	Animation* animation;
 	void draw(float scrollX = 0, float scrollY = 0) override;
+	void calculateSpeed(int level);
 };
 

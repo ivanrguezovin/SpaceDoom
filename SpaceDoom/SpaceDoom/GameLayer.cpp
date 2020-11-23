@@ -24,7 +24,7 @@ void GameLayer::init() {
 	tiles.clear();
 
 	audioBackground = new Audio("res/musica_ambiente.mp3", true);
-	//audioBackground->play();
+	audioBackground->play();
 
 	pointsPreLevel = points;
 	textPoints = new Text("Puntos", WIDTH * 0.92, HEIGHT * 0.04, game);
@@ -310,7 +310,14 @@ void GameLayer::update() {
 		}
 	}
 	for (auto const& projectile : projectiles) {
-		cout << "x: " << player->x << "; y: " << player->y << "; xp: " << projectile->x << "; yp: " << projectile->y << endl;
+		projectile->calculateSpeed(game->currentLevel);
+		projectile->update();
+	}
+	for (auto const& projectile : projectilesEnemy) {
+		projectile->calculateSpeed(game->currentLevel);
+		projectile->update();
+	}
+	for (auto const& projectile : projectilesTurret) {
 		projectile->update();
 	}
 	for (auto const& item : items) {
