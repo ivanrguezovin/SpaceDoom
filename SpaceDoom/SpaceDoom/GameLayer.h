@@ -46,6 +46,9 @@ public:
 	void loadMap(string name);
 	void loadMapObject(char character, float x, float y);
 	void calculateScroll();
+
+	void calculateSpeed(int level);
+
 	Actor* message;
 	bool pause;
 	// Elementos de interfaz

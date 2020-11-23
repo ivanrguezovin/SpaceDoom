@@ -49,19 +49,6 @@ void GameLayer::init() {
 	items.clear();
 
 	loadMap("res/" + to_string(game->currentLevel) + ".txt");
-
-	if (game->currentLevel == 0) {
-		player->vy = -2;
-	}
-	else if (game->currentLevel == 1) {
-		player->vy = -3;
-	}
-	else if (game->currentLevel == 2) {
-		player->vy = -4;
-	}
-	else if (game->currentLevel == 3) {
-		player->vy = -5;
-	}
 }
 
 void GameLayer::loadMap(string name) {
@@ -239,15 +226,37 @@ void GameLayer::processControls() {
 
 	}
 
-	// Eje X
-	if (controlMoveX > 0) {
-		player->moveX(1);
-	}
-	else if (controlMoveX < 0) {
-		player->moveX(-1);
+	calculateSpeed(game->currentLevel);
+}
+
+void GameLayer::calculateSpeed(int level) {
+	if (level == 0) {
+		// Eje X
+		if (controlMoveX > 0) {
+			player->moveX(1);
+		}
+		else if (controlMoveX < 0) {
+			player->moveX(-1);
+		}
+		else {
+			player->moveX(0);
+		}
+		//Eje Y
+		player->vy = -2;
 	}
 	else {
-		player->moveX(0);
+		// Eje X
+		if (controlMoveX > 0) {
+			player->moveX(level + 1);
+		}
+		else if (controlMoveX < 0) {
+			player->moveX((level * -1) - 1);
+		}
+		else {
+			player->moveX(0);
+		}
+		//Eje Y
+		player->vy = (level*-1)-2;
 	}
 }
 
@@ -335,7 +344,7 @@ void GameLayer::update() {
 				enemy->impacted();
 			}
 			else {
-				if (enemy->state != game->stateDying) {
+				if (enemy->state != game->stateDying && enemy->state != game->stateDead) {
 					enemy->state = game->stateHiting;
 					player->loseLife();
 					textLifes->content = to_string(player->lifes);
