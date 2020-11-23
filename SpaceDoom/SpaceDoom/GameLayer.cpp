@@ -209,8 +209,7 @@ void GameLayer::processControls() {
 
 
 	}
-	//procesar controles
-	//procesar controles
+	
 	// Disparar
 	if (controlContinue) {
 		pause = false;
