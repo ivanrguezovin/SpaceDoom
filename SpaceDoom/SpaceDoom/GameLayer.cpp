@@ -24,7 +24,7 @@ void GameLayer::init() {
 	tiles.clear();
 
 	audioBackground = new Audio("res/musica_ambiente.mp3", true);
-	audioBackground->play();
+	//audioBackground->play();
 
 	pointsPreLevel = points;
 	textPoints = new Text("Puntos", WIDTH * 0.92, HEIGHT * 0.04, game);

@@ -21,6 +21,10 @@ public:
 	Animation* aRunningRight;
 	Animation* aRunningLeft;
 	Animation* aShooting;
+	Animation* aIdleInvencible;
+	Animation* aRunningRightInvencible;
+	Animation* aRunningLeftInvencible;
+	Animation* aShootingInvencible;
 	Animation* animation; // Referencia a la animación mostrada
 	Audio* audioShoot;
 	int shootCadence = 30;
