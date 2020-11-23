@@ -23,8 +23,8 @@ void GameLayer::init() {
 	scrollX = 0;
 	tiles.clear();
 
-	//audioBackground = new Audio("res/musica_ambiente.mp3", true);
-	//audioBackground->play();
+	audioBackground = new Audio("res/musica_ambiente.mp3", true);
+	audioBackground->play();
 
 	points = 0;
 	textPoints = new Text("Puntos", WIDTH * 0.92, HEIGHT * 0.04, game);
@@ -396,12 +396,12 @@ void GameLayer::update() {
 				audioBoost->play();
 			}
 			else if (pUp == 1) { //ExtraLife
-				audioBoost = new Audio("res/ammo.wav", false);
+				audioBoost = new Audio("res/life.wav", false);
 				audioBoost->play();
 			}
 			else if (pUp == 4) { //Invencibilidad
 				player->invencibleTime = 250;
-				audioBoost = new Audio("res/ammo.wav", false);
+				audioBoost = new Audio("res/invencible.wav", false);
 				audioBoost->play();
 			}
 		}
