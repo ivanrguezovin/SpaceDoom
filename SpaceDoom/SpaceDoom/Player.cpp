@@ -128,7 +128,15 @@ Projectile* Player::shoot() {
 }
 
 void Player::draw(float scrollX, float scrollY) {
-	animation->draw(x - scrollX, y - scrollY);
+	//animation->draw(x - scrollX, y - scrollY);
+	if (hit == 0) {
+		animation->draw(x - scrollX, y - scrollY);
+	}
+	else {
+		if (hit % 10 >= 0 && hit % 10 <= 5) {
+			animation->draw(x - scrollX, y - scrollY);
+		}
+	}
 }
 
 void Player::loseLife() {

@@ -24,7 +24,7 @@ void GameLayer::init() {
 	tiles.clear();
 
 	audioBackground = new Audio("res/musica_ambiente.mp3", true);
-	audioBackground->play();
+	//audioBackground->play();
 
 	textHighScore = new Text("High Score: ", WIDTH * 0.45, HEIGHT * 0.94, game);
 	textHighScore->content = "High Score: ";
