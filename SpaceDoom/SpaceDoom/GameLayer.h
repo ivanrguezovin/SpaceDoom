@@ -89,5 +89,6 @@ public:
 	int controlMoveX = 0;
 
 	int pointsPreLevel = points;
+	int pf = 0;
 };
 
