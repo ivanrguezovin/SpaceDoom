@@ -24,9 +24,21 @@ void GameLayer::init() {
 	tiles.clear();
 
 	audioBackground = new Audio("res/musica_ambiente.mp3", true);
-	//audioBackground->play();
-	textFinalPoints = new Text("Last Score: ", WIDTH * 0.5, HEIGHT * 0.94, game);
-	textFinalPoints->content = "Last Score: " + to_string(pf); pf = 0;
+	audioBackground->play();
+
+	textHighScore = new Text("High Score: ", WIDTH * 0.45, HEIGHT * 0.94, game);
+	textHighScore->content = "High Score: ";
+
+	if (textFinalPoints != NULL) {
+		string n = textFinalPoints->content;
+		if (stoi(n) > pointsPreLevel){
+			pointsPreLevel = stoi(n);
+		}
+	}
+
+	textFinalPoints = new Text("", WIDTH * 0.65, HEIGHT * 0.94, game);
+	textFinalPoints->content = to_string(pointsPreLevel); 
+	
 	pointsPreLevel = points;
 	
 	textPoints = new Text("Puntos", WIDTH * 0.92, HEIGHT * 0.04, game);
@@ -279,7 +291,7 @@ void GameLayer::update() {
 		if (goal->isOverlap(player)) {
 			game->currentLevel++;
 			if (game->currentLevel > game->finalLevel) {
-				pf = points + player->bullets + player->lifes;
+				pointsPreLevel = points;
 				game->currentLevel = 0;
 				points = 0;
 				message = new Actor("res/mensaje_juego_completado.png", WIDTH * 0.5, HEIGHT * 0.5, 480, 320, game);
@@ -694,6 +706,7 @@ void GameLayer::draw() {
 	textLifes->draw();
 
 	textFinalPoints->draw();
+	textHighScore->draw();
 
 	buttonPause->draw();
 

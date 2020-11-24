@@ -70,6 +70,7 @@ public:
 	Audio* audioBackground;
 	Text* textPoints;
 	Text* textFinalPoints;
+	Text* textHighScore;
 	Text* textBullets;
 	Text* textLifes;
 	int points = 0;
@@ -89,6 +90,5 @@ public:
 	int controlMoveX = 0;
 
 	int pointsPreLevel = points;
-	int pf = 0;
 };
 
