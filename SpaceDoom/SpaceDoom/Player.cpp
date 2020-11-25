@@ -33,6 +33,7 @@ Player::Player(float x, float y, Game* game)
 
 void Player::update() {
 	if (invencibleTime > 0) {
+		hit = 0;
 		invencibleTime--;
 	}
 
