@@ -119,7 +119,7 @@ Projectile* Player::shoot() {
 			aShooting->currentFrame = 0; //"Rebobinar" animación
 		}
 		shootTime = shootCadence;
-		Projectile* projectile = new Projectile(x+x/32, y-y/28, game);
+		Projectile* projectile = new Projectile(x+x/32, y-y/28, game); //El projectile sale del arma
 		bullets--;
 		return projectile;
 	}

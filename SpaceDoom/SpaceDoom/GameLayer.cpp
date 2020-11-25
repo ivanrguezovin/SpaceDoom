@@ -827,7 +827,7 @@ void GameLayer::keysToControls(SDL_Event event) {
 		case SDLK_1:
 			game->scale();
 			break;
-		case SDLK_s: // pausa
+		case SDLK_q: // pausa
 			if (pause) {
 				pause = false;
 			}
