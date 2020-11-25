@@ -24,7 +24,7 @@ void GameLayer::init() {
 	tiles.clear();
 
 	audioBackground = new Audio("res/musica_ambiente.mp3", true);
-	//audioBackground->play();
+	audioBackground->play();
 
 	textHighScore = new Text("High Score: ", WIDTH * 0.45, HEIGHT * 0.94, game);
 	textHighScore->content = "High Score: ";
@@ -60,6 +60,12 @@ void GameLayer::init() {
 	projectilesTurret.clear(); // Vaciar por si reiniciamos el juego
 	goals.clear();
 	items.clear();
+
+	audioNuclear = new Audio("res/efecto_explosion.wav", false);
+	audioCoin = new Audio("res/coin.wav", false);
+	audioAmmo = new Audio("res/ammo.wav", false);
+	audioLife = new Audio("res/life.wav", false);
+	audioInvencible = new Audio("res/invencible.wav", false);
 
 	loadMap("res/" + to_string(game->currentLevel) + ".txt");
 }
@@ -422,8 +428,7 @@ void GameLayer::update() {
 			}
 			pUp = item->boosteo(p, s, l, textPoints, textBullets, textLifes, numEnemigos);
 			if (pUp == 3) { //Nuclear
-				audioBoost = new Audio("res/efecto_explosion.wav", false);
-				audioBoost->play();
+				audioNuclear->play();
 				for (auto const& enemy : enemies) {
 					if (enemy->isInRender(scrollX, scrollY)) {
 						enemy->impacted();
@@ -438,21 +443,17 @@ void GameLayer::update() {
 				}
 			}
 			else if (pUp == 0) { //Coin
-				audioBoost = new Audio("res/coin.wav", false);
-				audioBoost->play();
+				audioCoin->play();
 			}
 			else if (pUp == 2) {//ExtraAmmo
-				audioBoost = new Audio("res/ammo.wav", false);
-				audioBoost->play();
+				audioAmmo->play();
 			}
 			else if (pUp == 1) { //ExtraLife
-				audioBoost = new Audio("res/life.wav", false);
-				audioBoost->play();
+				audioLife->play();
 			}
 			else if (pUp == 4) { //Invencibilidad
 				player->invencibleTime = 250;
-				audioBoost = new Audio("res/invencible.wav", false);
-				audioBoost->play();
+				audioInvencible->play();
 			}
 		}
 	}
