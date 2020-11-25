@@ -410,7 +410,9 @@ void GameLayer::update() {
 				numEnemigos += 1;
 			}
 			for (auto const& tile : tiles) {
-				numEnemigos += 1;
+				if ((tile->destroyByProjectile() || tile->isTurret())) {
+					numEnemigos += 1;
+				}
 			}
 			pUp = item->boosteo(p, s, l, textPoints, textBullets, textLifes, numEnemigos);
 			if (pUp == 3) { //Nuclear
