@@ -129,7 +129,7 @@ void Space::updateMoveTop(Actor* dynamicAct) {
 
                 // Comprobamos si la distancia al estático es menor
                 // que nuestro movimientoPosible actual
-                if (possibleMovement <= downStatic - topDynamic) {
+                if (possibleMovement*2 <= downStatic - topDynamic) {
                     // La distancia es MENOR que nuestro movimiento posible
                     // Tenemos que actualizar el movimiento posible a uno menor
                     possibleMovement = downStatic - topDynamic;
