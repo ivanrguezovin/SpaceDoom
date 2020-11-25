@@ -426,7 +426,7 @@ void GameLayer::update() {
 				audioBoost->play();
 				for (auto const& enemy : enemies) {
 					if (enemy->isInRender(scrollX, scrollY)) {
-						deleteEnemies.push_back(enemy);
+						enemy->impacted();
 					}
 				}
 				for (auto const& tile : tiles) {
