@@ -16,7 +16,7 @@ void ExtraAmmo::draw(float scrollX, float scrollY) {
 }
 
 int ExtraAmmo::boosteo(int* points, int* shots, int* lifes, Text * textPoints, Text * textShots, Text * textLifes, int size) {
-	*shots = *shots + 10;
+	*shots = *shots + 5;
 	textShots->content = to_string(*shots);
 	return 2;
 }

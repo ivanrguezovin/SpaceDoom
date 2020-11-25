@@ -13,9 +13,9 @@ GameLayer::GameLayer(Game* game)
 
 
 void GameLayer::init() {
-	buttonLeft = new Actor("res/boton_izqda.png", WIDTH * 0.1, HEIGHT * 0.85, 100, 100, game);
+	buttonLeft = new Actor("res/boton_izqda.png", WIDTH * 0.13, HEIGHT * 0.85, 100, 100, game);
 	buttonRight = new Actor("res/boton_dcha.png", WIDTH * 0.35, HEIGHT * 0.85, 100, 100, game);
-	buttonShoot = new Actor("res/boton_disparo.png", WIDTH * 0.90, HEIGHT * 0.85, 100, 100, game);
+	buttonShoot = new Actor("res/boton_disparo.png", WIDTH * 0.87, HEIGHT * 0.85, 100, 100, game);
 	buttonPause = new Actor("res/boton_pausa.png", WIDTH * 0.08, HEIGHT * 0.05, 40, 40, game);
 
 	space = new Space(1);
@@ -24,7 +24,7 @@ void GameLayer::init() {
 	tiles.clear();
 
 	audioBackground = new Audio("res/musica_ambiente.mp3", true);
-	//audioBackground->play();
+	audioBackground->play();
 
 	textHighScore = new Text("High Score: ", WIDTH * 0.45, HEIGHT * 0.94, game);
 	textHighScore->content = "High Score: ";
