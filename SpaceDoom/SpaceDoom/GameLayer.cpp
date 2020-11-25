@@ -37,7 +37,7 @@ void GameLayer::init() {
 	}
 
 	textFinalPoints = new Text("", WIDTH * 0.65, HEIGHT * 0.94, game);
-	textFinalPoints->content = to_string(pointsPreLevel); 
+	textFinalPoints->content = to_string(finalPoints); 
 	
 	pointsPreLevel = points;
 	
@@ -292,6 +292,7 @@ void GameLayer::update() {
 			game->currentLevel++;
 			if (game->currentLevel > game->finalLevel) {
 				pointsPreLevel = points;
+				finalPoints = pointsPreLevel;
 				game->currentLevel = 0;
 				points = 0;
 				message = new Actor("res/mensaje_juego_completado.png", WIDTH * 0.5, HEIGHT * 0.5, 480, 320, game);
