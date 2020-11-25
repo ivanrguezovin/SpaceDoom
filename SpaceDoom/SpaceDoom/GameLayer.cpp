@@ -290,6 +290,7 @@ void GameLayer::update() {
 	for (auto const& goal : goals) {
 		if (goal->isOverlap(player)) {
 			game->currentLevel++;
+			points = points + player->lifes + player->bullets;
 			if (game->currentLevel > game->finalLevel) {
 				pointsPreLevel = points;
 				finalPoints = pointsPreLevel;
