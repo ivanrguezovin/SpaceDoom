@@ -12,5 +12,7 @@ public:
 	int shootCadence = 50;
 	int shootTime = 0;
 	virtual bool isTurret();
+	virtual void draw(float scrollX = 0, float scrollY = 0) override;
+	Animation* animation;
 };
 

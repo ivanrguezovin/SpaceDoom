@@ -24,7 +24,7 @@ void GameLayer::init() {
 	tiles.clear();
 
 	audioBackground = new Audio("res/musica_ambiente.mp3", true);
-	audioBackground->play();
+	//audioBackground->play();
 
 	textHighScore = new Text("High Score: ", WIDTH * 0.45, HEIGHT * 0.94, game);
 	textHighScore->content = "High Score: ";
@@ -409,11 +409,15 @@ void GameLayer::update() {
 			int pUp = 5;
 			int numEnemigos = 0;
 			for (auto const& enemy : enemies) {
-				numEnemigos += 1;
+				if (enemy->isInRender(scrollX, scrollY)) {
+					numEnemigos += 1;
+				}
 			}
 			for (auto const& tile : tiles) {
 				if ((tile->destroyByProjectile() || tile->isTurret())) {
-					numEnemigos += 1;
+					if (tile->isInRender(scrollX, scrollY)) {
+						numEnemigos += 1;
+					}
 				}
 			}
 			pUp = item->boosteo(p, s, l, textPoints, textBullets, textLifes, numEnemigos);
@@ -421,11 +425,15 @@ void GameLayer::update() {
 				audioBoost = new Audio("res/efecto_explosion.wav", false);
 				audioBoost->play();
 				for (auto const& enemy : enemies) {
-					deleteEnemies.push_back(enemy);
+					if (enemy->isInRender(scrollX, scrollY)) {
+						deleteEnemies.push_back(enemy);
+					}
 				}
 				for (auto const& tile : tiles) {
 					if ((tile->destroyByProjectile() || tile->isTurret())) {
-						deleteTiles.push_back(tile);
+						if (tile->isInRender(scrollX, scrollY)) {
+							deleteTiles.push_back(tile);
+						}
 					}
 				}
 			}
@@ -658,9 +666,10 @@ void GameLayer::update() {
 void GameLayer::calculateScroll() {
 
 	// limite arriba
-	if (player->y > HEIGHT * 0.87) { //0.87
+	if (player->y > HEIGHT * 0.87) {
 		if (player->y - scrollY < HEIGHT * 0.87) {
 			scrollY = player->y - HEIGHT * 0.87;
+			cout << scrollY << endl;
 		}
 	}
 
@@ -668,6 +677,7 @@ void GameLayer::calculateScroll() {
 	if (player->y < mapHeight - HEIGHT * 0.13) {
 		if (player->y - scrollY > HEIGHT * 0.87) {
 			scrollY = player->y - HEIGHT * 0.87;
+			cout << scrollY << endl;
 		}
 	}
 }
