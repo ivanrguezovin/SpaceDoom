@@ -8,6 +8,8 @@ GameLayer::GameLayer(Game* game)
 		WIDTH, HEIGHT, game);
 
 	gamePad = SDL_GameControllerOpen(0);
+	audioBackground = new Audio("res/musica_ambiente.mp3", true);
+	audioBackground->play();
 	init();
 }
 
@@ -22,9 +24,6 @@ void GameLayer::init() {
 	scrollY = 0;
 	scrollX = 0;
 	tiles.clear();
-
-	audioBackground = new Audio("res/musica_ambiente.mp3", true);
-	audioBackground->play();
 
 	textHighScore = new Text("High Score: ", WIDTH * 0.45, HEIGHT * 0.94, game);
 	textHighScore->content = "High Score: ";
@@ -61,12 +60,6 @@ void GameLayer::init() {
 	goals.clear();
 	items.clear();
 
-	audioNuclear = new Audio("res/efecto_explosion.wav", false);
-	audioCoin = new Audio("res/coin.wav", false);
-	audioAmmo = new Audio("res/ammo.wav", false);
-	audioLife = new Audio("res/life.wav", false);
-	audioInvencible = new Audio("res/invencible.wav", false);
-
 	loadMap("res/" + to_string(game->currentLevel) + ".txt");
 }
 
@@ -79,12 +72,12 @@ void GameLayer::loadMap(string name) {
 		return;
 	}
 	else {
-		// Por línea
+		// Por lï¿½nea
 		for (int i = 0; getline(streamFile, line); i++) {
 			istringstream streamLine(line);
 			mapWidth = line.length() * 40; // Ancho del mapa en pixels
 			mapHeight = (i + 1) * 40; // Altura del mapa en pixels
-			// Por carácter (en cada línea)
+			// Por carï¿½cter (en cada lï¿½nea)
 			for (int j = 0; !streamLine.eof(); j++) {
 				streamLine >> character; // Leer character 
 				//cout << character;
@@ -203,7 +196,7 @@ void GameLayer::processControls() {
 			}
 		}
 
-		// Cambio automático de input
+		// Cambio automï¿½tico de input
 		// PONER el GamePad
 		if (event.type == SDL_CONTROLLERBUTTONDOWN || event.type == SDL_CONTROLLERAXISMOTION) {
 			game->input = game->inputGamePad;
@@ -315,7 +308,7 @@ void GameLayer::update() {
 	}
 	
 
-	// Jugador se sale de los límites de la pantalla
+	// Jugador se sale de los lï¿½mites de la pantalla
 	if (player->x > WIDTH + 20) {
 		player->x = 0;
 	}
@@ -428,7 +421,6 @@ void GameLayer::update() {
 			}
 			pUp = item->boosteo(p, s, l, textPoints, textBullets, textLifes, numEnemigos);
 			if (pUp == 3) { //Nuclear
-				audioNuclear->play();
 				for (auto const& enemy : enemies) {
 					if (enemy->isInRender(scrollX, scrollY)) {
 						enemy->impacted();
@@ -442,18 +434,8 @@ void GameLayer::update() {
 					}
 				}
 			}
-			else if (pUp == 0) { //Coin
-				audioCoin->play();
-			}
-			else if (pUp == 2) {//ExtraAmmo
-				audioAmmo->play();
-			}
-			else if (pUp == 1) { //ExtraLife
-				audioLife->play();
-			}
 			else if (pUp == 4) { //Invencibilidad
 				player->invencibleTime = 250;
-				audioInvencible->play();
 			}
 		}
 	}
@@ -743,11 +725,11 @@ void GameLayer::gamePadToControls(SDL_Event event) {
 	// Leer los botones
 	bool buttonA = SDL_GameControllerGetButton(gamePad, SDL_CONTROLLER_BUTTON_A);
 	bool buttonStart = SDL_GameControllerGetButton(gamePad, SDL_CONTROLLER_BUTTON_START);
-	//cout << "botón:" << buttonA << ", " << buttonStart << endl;
+	//cout << "botï¿½n:" << buttonA << ", " << buttonStart << endl;
 	int stickX = SDL_GameControllerGetAxis(gamePad, SDL_CONTROLLER_AXIS_LEFTX);
 	//cout << "stickX" << stickX << endl;
 
-	// Retorna aproximadamente entre [-32800, 32800], el centro debería estar en 0
+	// Retorna aproximadamente entre [-32800, 32800], el centro deberï¿½a estar en 0
 	// Si el mando tiene "holgura" el centro varia [-4000 , 4000]
 	if (stickX > 4000) {
 		controlMoveX = 1;
@@ -775,7 +757,7 @@ void GameLayer::gamePadToControls(SDL_Event event) {
 
 
 void GameLayer::mouseToControls(SDL_Event event) {
-	// Modificación de coordenadas por posible escalado
+	// Modificaciï¿½n de coordenadas por posible escalado
 	float motionX = event.motion.x / game->scaleLower;
 	float motionY = event.motion.y / game->scaleLower;
 	// Cada vez que hacen click

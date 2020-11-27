@@ -2,7 +2,7 @@
 
 Invencible::Invencible(string filename, float x, float y, float width, float height, Game* game)
 	: Item(filename, x, y, width, height, game) {
-
+	audioItem = new Audio("res/invencible.wav", false);
 	aMoving = new Animation(filename, width, height, 24, 24, 1, 1, true, game);
 	animation = aMoving;
 }
@@ -16,5 +16,6 @@ void Invencible::draw(float scrollX, float scrollY) {
 }
 
 int Invencible::boosteo(int* points, int* shots, int* lifes, Text * textPoints, Text * textShots, Text * textLifes, int size) {
+	audioItem->play();
 	return 4;
 }

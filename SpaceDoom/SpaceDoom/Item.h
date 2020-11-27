@@ -2,6 +2,7 @@
 #include "Actor.h"
 #include "Text.h"
 #include "Animation.h"
+#include "Audio.h"
 
 class Item : public Actor
 {
@@ -12,5 +13,6 @@ public:
 	virtual int boosteo(int* points, int* shots, int* lifes, Text* textPoints, Text* textShots, Text* textLifes, int size);
 	Animation* aMoving;
 	Animation* animation;
+	Audio* audioItem;
 };
 
