@@ -17,3 +17,7 @@ void Item::draw(float scrollX, float scrollY) {
 int Item::boosteo(int* points, int* shots, int* lifes, Text* textPoints, Text* textShots, Text* textLifes, int size) {
 	return 99999;
 }
+
+void Item::erase() {
+	delete aMoving;
+}

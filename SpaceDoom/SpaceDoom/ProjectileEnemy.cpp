@@ -24,3 +24,7 @@ void ProjectileEnemy::calculateSpeed(int level) {
 		vy = level + 5;
 	}
 }
+
+void ProjectileEnemy::erase() {
+	delete aMoving;
+}

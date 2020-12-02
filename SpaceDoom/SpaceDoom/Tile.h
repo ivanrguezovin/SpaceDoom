@@ -14,5 +14,6 @@ public:
 	virtual bool isTurret();
 	virtual void draw(float scrollX = 0, float scrollY = 0) override;
 	Animation* animation;
+	void erase();
 };
 

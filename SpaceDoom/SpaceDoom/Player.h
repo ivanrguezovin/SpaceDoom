@@ -31,6 +31,7 @@ public:
 	int shootTime = 0;
 	int bullets = 8;
 	int invencibleTime = 0;
-	int hit = 0;;
+	int hit = 0;
+	void erase();
 };
 

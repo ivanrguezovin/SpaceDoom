@@ -27,3 +27,7 @@ ProjectileTurret* Tile::shoot() {
 void Tile::draw(float scrollX, float scrollY) {
 	animation->draw(x - scrollX, y - scrollY);
 }
+
+void Tile :: erase() {
+	delete animation;
+}

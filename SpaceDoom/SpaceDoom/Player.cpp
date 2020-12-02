@@ -148,3 +148,14 @@ void Player::loseLife() {
 		}
 	}
 }
+
+void Player::erase() {
+	delete aIdle;
+	delete aIdleInvencible;
+	delete aShooting;
+	delete aShootingInvencible;
+	delete aRunningLeft;
+	delete aRunningLeftInvencible;
+	delete aRunningRight;
+	delete aRunningRightInvencible;
+}

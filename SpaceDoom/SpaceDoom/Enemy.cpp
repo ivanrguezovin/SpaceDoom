@@ -59,3 +59,9 @@ void Enemy::draw(float scrollX, float scrollY) {
 ProjectileEnemy* Enemy::shoot() {
 	return NULL;
 }
+
+void Enemy::erase() {
+	delete aMoving;
+	delete aHiting;
+	delete aDying;
+}

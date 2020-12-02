@@ -14,5 +14,6 @@ public:
 	Animation* aMoving;
 	Animation* animation;
 	Audio* audioItem;
+	void erase();
 };
 

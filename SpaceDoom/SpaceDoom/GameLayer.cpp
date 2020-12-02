@@ -15,6 +15,11 @@ GameLayer::GameLayer(Game* game)
 
 
 void GameLayer::init() {
+
+	if (player != NULL) {
+		player->erase();
+	}
+
 	buttonLeft = new Actor("res/boton_izqda.png", WIDTH * 0.13, HEIGHT * 0.85, 100, 100, game);
 	buttonRight = new Actor("res/boton_dcha.png", WIDTH * 0.35, HEIGHT * 0.85, 100, 100, game);
 	buttonShoot = new Actor("res/boton_disparo.png", WIDTH * 0.87, HEIGHT * 0.85, 100, 100, game);
@@ -441,7 +446,7 @@ void GameLayer::update() {
 	}
 
 	for (auto const& projectile : projectiles) {
-		if (projectile->vy == 0) {
+		if (!projectile->isInRender(scrollX,scrollY)) {
 			bool pInList = std::find(deleteProjectiles.begin(),
 				deleteProjectiles.end(),
 				projectile) != deleteProjectiles.end();
@@ -463,7 +468,7 @@ void GameLayer::update() {
 		}
 	}
 	for (auto const& projectile : projectilesEnemy) {
-		if (projectile->vy == 0) {
+		if (projectile->vy == 0 || projectile->y > (player->y * 1.15)) {
 
 			bool pInList = std::find(deleteProjectilesEnemy.begin(),
 				deleteProjectilesEnemy.end(),
@@ -475,7 +480,7 @@ void GameLayer::update() {
 		}
 	}
 	for (auto const& projectile : projectilesTurret) {
-		if (projectile->vy == 0) {
+		if (projectile->vy == 0 || projectile->y > (player->y * 1.15)) {
 
 			bool pInList = std::find(deleteProjectilesTurret.begin(),
 				deleteProjectilesTurret.end(),
@@ -606,24 +611,31 @@ void GameLayer::update() {
 	for (auto const& delEnemy : deleteEnemies) {
 		enemies.remove(delEnemy);
 		space->removeDynamicActor(delEnemy);
+		delEnemy->erase();
+		delete delEnemy;
 	}
 	deleteEnemies.clear();
 
 	for (auto const& delItem : deleteItems) {
 		items.remove(delItem);
 		space->removeDynamicActor(delItem);
+		delItem->erase();
+		delete delItem;
 	}
 	deleteItems.clear();
 
 	for (auto const& delTile : deleteTiles) {
 		tiles.remove(delTile);
 		space->removeStaticActor(delTile);
+		delTile->erase();
+		delete delTile;
 	}
 	deleteTiles.clear();
 
 	for (auto const& delProjectile : deleteProjectiles) {
 		projectiles.remove(delProjectile);
 		space->removeDynamicActor(delProjectile);
+		delProjectile->erase();
 		delete delProjectile;
 	}
 	deleteProjectiles.clear();
@@ -631,6 +643,7 @@ void GameLayer::update() {
 	for (auto const& delProjectile : deleteProjectilesEnemy) {
 		projectilesEnemy.remove(delProjectile);
 		space->removeDynamicActor(delProjectile);
+		delProjectile->erase();
 		delete delProjectile;
 	}
 	deleteProjectilesEnemy.clear();
@@ -638,6 +651,7 @@ void GameLayer::update() {
 	for (auto const& delProjectile : deleteProjectilesTurret) {
 		projectilesTurret.remove(delProjectile);
 		space->removeDynamicActor(delProjectile);
+		delProjectile->erase();
 		delete delProjectile;
 	}
 	deleteProjectilesTurret.clear();
@@ -652,7 +666,6 @@ void GameLayer::calculateScroll() {
 	if (player->y > HEIGHT * 0.87) {
 		if (player->y - scrollY < HEIGHT * 0.87) {
 			scrollY = player->y - HEIGHT * 0.87;
-			cout << scrollY << endl;
 		}
 	}
 
@@ -660,7 +673,6 @@ void GameLayer::calculateScroll() {
 	if (player->y < mapHeight - HEIGHT * 0.13) {
 		if (player->y - scrollY > HEIGHT * 0.87) {
 			scrollY = player->y - HEIGHT * 0.87;
-			cout << scrollY << endl;
 		}
 	}
 }

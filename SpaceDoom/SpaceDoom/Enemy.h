@@ -20,5 +20,6 @@ public:
 	virtual ProjectileEnemy* shoot();
 	int shootCadence = 100;
 	int shootTime = 0;
+	void erase();
 };
 

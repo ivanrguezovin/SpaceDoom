@@ -15,3 +15,7 @@ void ProjectileTurret::update() {
 void ProjectileTurret::draw(float scrollX, float scrollY) {
 	animation->draw(x - scrollX, y - scrollY);
 }
+
+void ProjectileTurret::erase() {
+	delete aMoving;
+}
