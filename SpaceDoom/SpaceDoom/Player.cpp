@@ -4,7 +4,6 @@ Player::Player(float x, float y, Game* game)
 	: Actor("res/soldier_idle.png", x, y, 160, 160, game) {
 
 	state = game->stateMoving;
-	audioShoot = new Audio("res/efecto_disparo.wav", false);
 
 	aShooting = new Animation("res/soldier_shoot.png",
 		width, height, 2400, 160, 0.25, 15, false, game);
@@ -111,7 +110,6 @@ Projectile* Player::shoot() {
 
 	if (shootTime == 0 && bullets > 0) {
 		state = game->stateShooting;
-		audioShoot->play();
 		if (invencibleTime > 0) {
 			aShootingInvencible->currentFrame = 0; //"Rebobinar" animación
 		}

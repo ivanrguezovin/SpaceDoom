@@ -13,7 +13,6 @@ public:
 	virtual int boosteo(int* points, int* shots, int* lifes, Text* textPoints, Text* textShots, Text* textLifes, int size);
 	Animation* aMoving;
 	Animation* animation;
-	Audio* audioItem;
 	void erase();
 };
 

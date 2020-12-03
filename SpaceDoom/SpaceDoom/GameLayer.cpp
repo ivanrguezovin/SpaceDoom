@@ -9,6 +9,12 @@ GameLayer::GameLayer(Game* game)
 
 	gamePad = SDL_GameControllerOpen(0);
 	audioBackground = new Audio("res/musica_ambiente.mp3", true);
+	audioCoin = new Audio("res/coin.wav", false);
+	audioNuclear = new Audio("res/explosion.wav", false);
+	audioInvencible = new Audio("res/invencible.wav", false);
+	audioAmmo = new Audio("res/ammo.wav", false);
+	audioLife = new Audio("res/life.wav", false);
+	audioShoot = new Audio("res/efecto_disparo.wav", false);
 	audioBackground->play();
 	init();
 }
@@ -64,6 +70,7 @@ void GameLayer::init() {
 	projectilesTurret.clear(); // Vaciar por si reiniciamos el juego
 	goals.clear();
 	items.clear();
+
 
 	loadMap("res/" + to_string(game->currentLevel) + ".txt");
 }
@@ -235,6 +242,7 @@ void GameLayer::processControls() {
 	if (controlShoot) {
 		Projectile* newProjectile = player->shoot();
 		if (newProjectile != NULL) {
+			audioShoot->play();
 			textBullets->content = to_string(player->bullets);
 			space->addDynamicActor(newProjectile);
 			projectiles.push_back(newProjectile);
@@ -296,6 +304,9 @@ void GameLayer::update() {
 			game->currentLevel++;
 			points = points + player->lifes + player->bullets;
 			if (game->currentLevel > game->finalLevel) {
+				audioBackground->~Audio();
+				audioBackground = new Audio("res/musica_ambiente.mp3", true);
+				audioBackground->play();
 				pointsPreLevel = points;
 				finalPoints = pointsPreLevel;
 				game->currentLevel = 0;
@@ -426,6 +437,7 @@ void GameLayer::update() {
 			}
 			pUp = item->boosteo(p, s, l, textPoints, textBullets, textLifes, numEnemigos);
 			if (pUp == 3) { //Nuclear
+				audioNuclear->play();
 				for (auto const& enemy : enemies) {
 					if (enemy->isInRender(scrollX, scrollY)) {
 						enemy->impacted();
@@ -440,7 +452,17 @@ void GameLayer::update() {
 				}
 			}
 			else if (pUp == 4) { //Invencibilidad
+				audioInvencible->play();
 				player->invencibleTime = 250;
+			}
+			else if (pUp == 0) { //Coin
+				audioCoin->play();
+			}
+			else if (pUp == 1) {
+				audioLife->play();
+			}
+			else if (pUp == 2) {
+				audioAmmo->play();
 			}
 		}
 	}

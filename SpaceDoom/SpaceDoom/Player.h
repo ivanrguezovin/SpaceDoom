@@ -26,7 +26,6 @@ public:
 	Animation* aRunningLeftInvencible;
 	Animation* aShootingInvencible;
 	Animation* animation; // Referencia a la animación mostrada
-	Audio* audioShoot;
 	int shootCadence = 30;
 	int shootTime = 0;
 	int bullets = 8;

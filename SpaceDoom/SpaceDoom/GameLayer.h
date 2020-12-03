@@ -66,7 +66,15 @@ public:
 	list<Tile*> tiles;
 	list<Tile*> goals;
 	list<Item*> items;
+
 	Audio* audioBackground;
+	Audio* audioCoin;
+	Audio* audioNuclear;
+	Audio* audioInvencible;
+	Audio* audioAmmo; 
+	Audio* audioLife;
+	Audio* audioShoot;
+
 	Text* textPoints;
 	Text* textFinalPoints;
 	Text* textHighScore;
