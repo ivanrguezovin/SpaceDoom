@@ -84,12 +84,12 @@ void GameLayer::loadMap(string name) {
 		return;
 	}
 	else {
-		// Por l�nea
+		// Por linea
 		for (int i = 0; getline(streamFile, line); i++) {
 			istringstream streamLine(line);
 			mapWidth = line.length() * 40; // Ancho del mapa en pixels
 			mapHeight = (i + 1) * 40; // Altura del mapa en pixels
-			// Por car�cter (en cada l�nea)
+			// Por caracter (en cada linea)
 			for (int j = 0; !streamLine.eof(); j++) {
 				streamLine >> character; // Leer character 
 				//cout << character;
@@ -208,7 +208,7 @@ void GameLayer::processControls() {
 			}
 		}
 
-		// Cambio autom�tico de input
+		// Cambio automatico de input
 		// PONER el GamePad
 		if (event.type == SDL_CONTROLLERBUTTONDOWN || event.type == SDL_CONTROLLERAXISMOTION) {
 			game->input = game->inputGamePad;
@@ -324,7 +324,7 @@ void GameLayer::update() {
 	}
 	
 
-	// Jugador se sale de los l�mites de la pantalla
+	// Jugador se sale de los limites de la pantalla
 	if (player->x > WIDTH + 20) {
 		player->x = 0;
 	}
@@ -759,11 +759,11 @@ void GameLayer::gamePadToControls(SDL_Event event) {
 	// Leer los botones
 	bool buttonA = SDL_GameControllerGetButton(gamePad, SDL_CONTROLLER_BUTTON_A);
 	bool buttonStart = SDL_GameControllerGetButton(gamePad, SDL_CONTROLLER_BUTTON_START);
-	//cout << "bot�n:" << buttonA << ", " << buttonStart << endl;
+	//cout << "boton:" << buttonA << ", " << buttonStart << endl;
 	int stickX = SDL_GameControllerGetAxis(gamePad, SDL_CONTROLLER_AXIS_LEFTX);
 	//cout << "stickX" << stickX << endl;
 
-	// Retorna aproximadamente entre [-32800, 32800], el centro deber�a estar en 0
+	// Retorna aproximadamente entre [-32800, 32800], el centro deberia estar en 0
 	// Si el mando tiene "holgura" el centro varia [-4000 , 4000]
 	if (stickX > 4000) {
 		controlMoveX = 1;
@@ -791,7 +791,7 @@ void GameLayer::gamePadToControls(SDL_Event event) {
 
 
 void GameLayer::mouseToControls(SDL_Event event) {
-	// Modificaci�n de coordenadas por posible escalado
+	// Modificacion de coordenadas por posible escalado
 	float motionX = event.motion.x / game->scaleLower;
 	float motionY = event.motion.y / game->scaleLower;
 	// Cada vez que hacen click

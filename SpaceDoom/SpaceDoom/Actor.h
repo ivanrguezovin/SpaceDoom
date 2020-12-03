@@ -17,7 +17,7 @@ public:
 	bool collisionDown;
 	bool collisionUp;
 
-	bool clicked; // Está pulsado
+	bool clicked; // Esta pulsado
 	SDL_Texture* texture;
 	int x;
 	int y;

@@ -25,7 +25,7 @@ public:
 	Animation* aRunningRightInvencible;
 	Animation* aRunningLeftInvencible;
 	Animation* aShootingInvencible;
-	Animation* animation; // Referencia a la animación mostrada
+	Animation* animation; // Referencia a la animacion mostrada
 	int shootCadence = 30;
 	int shootTime = 0;
 	int bullets = 8;
