@@ -1,2 +1,2 @@
 # Space Doom
-Juego en C++ para la asignatura de Videojuegos
+Runner de modalidad shooter con perspectiva vertical programado en C++
